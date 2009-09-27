@@ -1,0 +1,60 @@
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Text;
+
+namespace robokins.Utility
+{
+    class HTTP
+    {
+        const string UserAgent = "Mozilla/5.0 (X11; U; Linux x86_64; en-GB; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2";
+        public const int DownloadDelay = 25;
+        public const int DownloadMaxTry = 3;
+
+        public static string DownloadPage(string uri)
+        {
+#if !CURL
+            try
+            {
+                HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(uri);
+                req.UserAgent = UserAgent;
+                
+
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                if (resp.StatusCode != HttpStatusCode.OK)
+                    return string.Empty;
+
+                string res = (new StreamReader(resp.GetResponseStream())).ReadToEnd();
+                resp.Close();
+                return res;
+            }
+            catch (Exception) { return string.Empty; }
+#endif
+#if CURL
+            return Process.Output(string.Concat("curl -A \"", UserAgent, "\" \"", uri, "\""));
+#endif
+        }
+
+        public static string DownloadPage(string uri, string data)
+        {
+#if !CURL
+            byte[] buffer = Encoding.ASCII.GetBytes(data);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(uri);
+
+            req.Method = "POST";
+            req.ContentType = "application/x-www-form-urlencoded";
+            req.ContentLength = buffer.Length;
+
+            Stream post = req.GetRequestStream();
+            post.Write(buffer, 0, buffer.Length);
+            post.Close();
+
+            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+            return (new StreamReader(resp.GetResponseStream())).ReadToEnd();
+#endif
+#if CURL
+            return Process.Output(string.Concat("curl", string.Format("-A \"{0}\" -d \"{1}\" \"{2}\"", UserAgent, data, uri)));
+#endif
+        }
+    }
+}
