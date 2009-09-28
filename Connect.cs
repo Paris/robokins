@@ -53,7 +53,7 @@ namespace robokins
             autoTriggers.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
 #if LKINS
-                Message(Lolikins, "!stuff");
+                Message("Lolikins", "!stuff");
 #endif
 #if MIOKINS
                 Message("miokins", string.Concat("`mio ", random.Next(1, 6).ToString()));

@@ -45,12 +45,5 @@ namespace robokins
         const int RRWon = 360 * RRTicks;
         const string RRBanFlag = "b";
 #endif
-
-#if LKINS
-        const string Lolikins = "Lolikins";
-#endif
-#if MIOKINS
-        const string Miokins = "miokins";
-#endif
     }
 }
