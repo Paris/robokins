@@ -43,19 +43,6 @@ namespace robokins
                     }
                     break;
 
-                case "reset":
-                    if (auth)
-                    {
-                        start = Utility.Time.TimeSpanNow();
-                        queries = 0;
-                        pastes = 0;
-                        response = "Stats reset successfully";
-                    }
-                    else
-                        response = "You do not have the authority to reset my stats.";
-                    notify = true;
-                    break;
-
                 case "nick":
                     if (auth)
                     {
