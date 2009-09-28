@@ -45,7 +45,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="Action.cs" />
     <Compile Include="Bot.cs" />
     <Compile Include="Invoke.cs" />
     <Compile Include="IRC\Client\Channel.cs" />

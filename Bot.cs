@@ -42,8 +42,7 @@ namespace robokins
                     try { message = new ReceivedMessage(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
-                    if (!Action(message))
-                        Trigger(message);
+                    Trigger(message);
 
                     if (quit)
                     {
