@@ -27,6 +27,7 @@ namespace robokins
                                  Delimiter + "unaffiliated/ahklerner" +
                                  Delimiter + "unaffiliated/chalamius" +
                                  Delimiter + "unaffiliated/k3ph" +
+                                 Delimiter + "unaffiliated/skwire" +
                                  Delimiter;
 
         const int ReceiveDelay = 100;
