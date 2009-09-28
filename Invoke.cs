@@ -12,11 +12,6 @@ namespace robokins
             if (message.User.Host == "services." || message.User.Ident == "freenode" || message.User.Nick.Length == 0 || message.Text.Length == 0)
                 return false;
 
-#if LKINS
-            if (message.User.Nick.Equals(Lolikins, StringComparison.OrdinalIgnoreCase))
-                return false;
-#endif
-
             bool query = message.Target[0] != '#';
             char first = message.Text[0];
             string word = message.Text.Split(Bot.boundary, 2, StringSplitOptions.RemoveEmptyEntries)[0].ToLowerInvariant();
