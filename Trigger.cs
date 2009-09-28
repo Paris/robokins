@@ -14,7 +14,7 @@ namespace robokins
         {
             #region Variables
 
-            if (!Invoke(ref message))
+            if (!Invoke(message))
                 return;
 
             bool notify = false;
