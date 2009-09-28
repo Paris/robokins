@@ -21,7 +21,7 @@ namespace robokins
         const string NickGroup = Delimiter + Nick + Delimiter + "\\ahk\\bot" + Delimiter;
         const string RealName = "IRC Bot";
         const string InitUsermode = "8";
-        const string Usermode = "+CeEiIQ-w";
+        const string Usermode = "+CEiI";
 
         const string Operators = Delimiter + "pdpc/supporter/student/titan" +
                                  Delimiter + "unaffiliated/ahklerner" +
