@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using robokins.Utility;
 using robokins.Utility.Search;
 
@@ -6,7 +7,7 @@ namespace robokins
 {
     partial class Program
     {
-#if DEBUG
+        [Conditional("DEBUG")]
         static void Tests()
         {
             //Console.WriteLine("FML: {0}", FMyLife.Random("") ?? "null");
@@ -27,6 +28,5 @@ namespace robokins
 
             Console.Read();
         }
-#endif
     }
 }

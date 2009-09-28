@@ -1,6 +1,4 @@
-﻿#define TESTS
-
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Security;
@@ -12,10 +10,7 @@ namespace robokins
     {
         public static void Main()
         {
-#if DEBUG && TESTS
             Tests();
-            return;
-#endif
 
             const int RetryDelay = 5000;
             const int MaxRetry = 1 * 60 * 60 * 1000 / RetryDelay;
