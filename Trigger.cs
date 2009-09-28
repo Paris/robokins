@@ -67,17 +67,6 @@ namespace robokins
                     }
                     break;
 
-                case "uptime":
-                case "cpu":
-                    if (auth)
-                        response = string.Concat(Utility.Font.Underlined + "Uptime:" + Utility.Font.Underlined, Utility.Process.Output("uptime"));
-                    else
-                    {
-                        response = "You do not have the authority to request this information.";
-                        notify = true;
-                    }
-                    break;
-
                 case "quiet":
                 case "mute":
                 case "m":
@@ -196,21 +185,6 @@ namespace robokins
 
                 case "asl":
                     response = Utility.AgeSexLocation.Response();
-                    break;
-
-                case "o/":
-                    response = "\\o";
-                    action = true;
-                    break;
-
-                case "\\o":
-                    response = "o/";
-                    action = true;
-                    break;
-
-                case "mud":
-                    if (command[2].Length == 0)
-                        response = "kip";
                     break;
 
                 case "smile":
