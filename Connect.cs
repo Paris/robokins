@@ -33,6 +33,7 @@ namespace robokins
             paste = new Timer(PasteFreq);
             if (Directory.Exists(PasteSync))
             {
+                pasteDir = new DirectoryInfo(PasteSync);
                 foreach (FileInfo file in pasteDir.GetFiles())
                     file.Delete();
                 paste.Elapsed += new ElapsedEventHandler(PasteCheck);

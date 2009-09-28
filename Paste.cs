@@ -1,13 +1,14 @@
-﻿using System.IO;
+﻿#if PASTE
+
+using System.IO;
 using System.Timers;
 
 namespace robokins
 {
     partial class Bot
     {
-#if PASTE
         Timer paste;
-        DirectoryInfo pasteDir = new DirectoryInfo(PasteSync);
+        DirectoryInfo pasteDir;
 
         void PasteCheck(object sender, ElapsedEventArgs e)
         {
@@ -26,6 +27,7 @@ namespace robokins
                 file.Delete();
             }
         }
-#endif
     }
 }
+
+#endif
