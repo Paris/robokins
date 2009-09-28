@@ -18,9 +18,7 @@ namespace robokins
             client.Pass(password);
             //password.Dispose();
             client.User(Username, InitUsermode, RealName);
-#if !DEBUG
             client.Private(Client.NickServ, "GHOST " + Nick);
-#endif
             client.Nick(Nick);
             nick = Nick;
             client.Mode(Nick, Usermode);
