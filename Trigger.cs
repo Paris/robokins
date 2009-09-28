@@ -135,21 +135,6 @@ namespace robokins
                     }
                     break;
 
-                case "gc":
-                    if (auth)
-                    {
-                        GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
-                        GC.WaitForPendingFinalizers();
-                        response = string.Format("Total reported memory allocated: {0}{1} KiB{0}",
-                            Utility.Font.Bold, Math.Round((decimal)(GC.GetTotalMemory(true) / 1024), 2));
-                    }
-                    else
-                    {
-                        response = "Sorry, you do not have the authority to perfom this command.";
-                        notify = true;
-                    }
-                    break;
-
                 #endregion
 
                 #region Messages
