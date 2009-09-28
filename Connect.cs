@@ -39,14 +39,6 @@ namespace robokins
             }
 #endif
 
-#if RR
-            rr = new Timer(RRTicks);
-            rr.Elapsed += new ElapsedEventHandler(RRDefaults);
-            rr.Start();
-            if (rrEnabled)
-                Op = true;
-#endif
-
 #if LKINS || MIOKINS
             bots = new Timer(60 * 60 * 1000 / 2);
             bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)

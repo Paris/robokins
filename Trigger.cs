@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Text;
-using System.Threading;
 using robokins.IRC;
 
 namespace robokins
@@ -223,71 +222,6 @@ namespace robokins
                     action = true;
                     break;
 
-                case "rr":
-#if RR
-                    if (auth)
-                    {
-                        string mode = command[1].ToLowerInvariant();
-                        switch (mode)
-                        {
-                            case "on":
-                                Op = rr.Enabled = rrEnabled = true;
-                                response = "Russian roulette is now enabled.";
-                                break;
-
-                            case "off":
-                                Op = rr.Enabled = rrEnabled = false;
-                                response = "Russian roulette is now disabled.";
-                                RRDefaults(true);
-                                break;
-
-                            default:
-                                response = "You are an operator of " + Utility.Font.Bold + Channel +
-                                    Utility.Font.Bold + " so there is no need for you to play the odds :P";
-                                break;
-                        }
-                        notify = true;
-                    }
-                    else if (message.Target != Channel)
-                        response = string.Format("You need to be on the channel {0}{1}{0} to use this command.", Utility.Font.Bold, Channel);
-                    else if (!rrEnabled)
-                    {
-                        response = "Sorry, Russian roulette is currently disabled. Please ask an operator to turn it on.";
-                        notify = true;
-                    }
-                    else
-                    {
-                        RRStat rrtarget = new RRStat
-                        {
-                            Won = Utility.Texts.Random.Next(0, 50) == 13,
-                            Time = Environment.TickCount,
-                            User = message.User
-                        };
-                        if (rrtarget.Won)
-                        {
-                            client.Private(Client.ChanServ, "VOICE " + Channel + " " + message.User.Nick);
-                            int mins = RRWon / RRTicks;
-                            response = string.Format("Congratulations you have won {0} minute{1} of voice in {2} :D", mins, mins > 1 ? "s" : string.Empty, Channel);
-                            notify = true;
-                        }
-                        else
-                        {
-                            client.Mode(Channel, "+" + RRBanFlag + " *!*@" + message.User.Host);
-                            Thread.Sleep(SendMicroDelay);
-                            client.Kick(Channel, message.User.Nick, "unlucky");
-                            int mins = RRBan / RRTicks;
-                            response = string.Format("Sorry, you have lost and will be banned for {0} minute{1} :(", mins, mins > 1 ? "s" : string.Empty);
-                            notify = true;
-                        }
-                        rrList.Add(rrtarget);
-                    }
-#endif
-#if !RR
-                    response = "Sorry, Russian roulette is currently unavailable.";
-                    notify = true;
-#endif
-                    break;
-
                 #endregion
 
                 #region Utilities
@@ -328,6 +262,7 @@ namespace robokins
                     notify = true;
                     break;
 
+                case "rr":
                 case "loli":
                 case "onee":
                 case "lion":

@@ -51,12 +51,6 @@ namespace robokins
                             paste.Stop();
 #endif
 
-#if RR
-                        if (rr.Enabled)
-                            rr.Stop();
-                        RRDefaults(true);
-#endif
-
 #if LKINS
                         bots.Stop();
 #endif
