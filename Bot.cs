@@ -58,7 +58,7 @@ namespace robokins
 #endif
 
 #if LKINS
-                        autoTriggers.Stop();
+                        bots.Stop();
 #endif
 
                         if (irc.Connected)

@@ -49,8 +49,8 @@ namespace robokins
 #endif
 
 #if LKINS || MIOKINS
-            autoTriggers = new Timer(60 * 60 * 1000 / 2);
-            autoTriggers.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
+            bots = new Timer(60 * 60 * 1000 / 2);
+            bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
 #if LKINS
                 Message("Lolikins", "!stuff");
@@ -59,10 +59,8 @@ namespace robokins
                 Message("miokins", string.Concat("`mio ", random.Next(1, 6).ToString()));
 #endif
             });
-            autoTriggers.Start();
+            bots.Start();
 #endif
-
-
         }
     }
 }

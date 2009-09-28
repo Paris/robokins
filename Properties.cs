@@ -31,7 +31,7 @@ namespace robokins
         }
 
 #if LKINS || MIOKINS
-        Timer autoTriggers;
+        Timer bots;
 #endif
     }
 }
