@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -208,6 +209,21 @@ namespace robokins
                 case "help":
                     response = string.Format("Hello {0}, how can we help? If you have not already please read the tutorial at " +
                         "http://www.autohotkey.com/docs/Tutorial.htm", message.User.Nick);
+                    break;
+
+                case "about":
+                    Assembly self = Assembly.GetExecutingAssembly();
+                    StringBuilder about = new StringBuilder();
+                    about.Append(((AssemblyTitleAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyTitleAttribute))).Title);
+                    about.Append(" v");
+                    about.Append(self.GetName().Version.ToString());
+                    about.Append(" - ");
+                    about.Append(((AssemblyDescriptionAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyDescriptionAttribute))).Description);
+                    about.Append(" by ");
+                    about.Append(((AssemblyCompanyAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyCompanyAttribute))).Company);
+                    about.Append(". See ");
+                    about.Append(((AssemblyProductAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyProductAttribute))).Product);
+                    response = about.ToString();
                     break;
 
                 #endregion

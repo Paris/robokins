@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("#ahk bot")]
-[assembly: AssemblyDescription("IRC bot for AutoHotkey")]
+[assembly: AssemblyTitle("robokins")]
+[assembly: AssemblyDescription("IRC bot for #ahk on freenode")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("titan@autohotkey.net")]
-[assembly: AssemblyProduct("robokins")]
+[assembly: AssemblyCompany("Titan <titan@autohotkey.net>")]
+[assembly: AssemblyProduct("http://github.com/ins3/robokins")]
 [assembly: AssemblyCopyright("Copyright © 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
