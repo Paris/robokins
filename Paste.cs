@@ -24,7 +24,6 @@ namespace robokins
 
                 Message(Channel, string.Format("{0} pasted {1}{2}{3}", new string[] { nick, PasteURI, id, info }));
                 file.Delete();
-                pastes++;
             }
         }
 #endif

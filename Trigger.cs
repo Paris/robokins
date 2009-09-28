@@ -144,44 +144,8 @@ namespace robokins
                 case "stats":
                 case "stat":
                 case "s":
-                    var status = new StringBuilder(Client.BufferSize);
-                    const string seperator = " | ";
-
-                    status.Append("Uptime: ");
-                    status.Append(Utility.Font.Bold);
-                    status.Append(Utility.Time.ToDays(Math.Abs(Utility.Time.TimeSpanNow().Subtract(start).TotalSeconds)));
-                    status.Append(Utility.Font.Bold);
-
-                    status.Append(seperator);
-                    status.Append(Utility.Font.Colour);
-                    status.Append(Utility.Font.Colours.Brown);
-                    status.Append("Memory: ");
-                    status.Append(Utility.Font.Bold);
-                    long memory = Process.GetCurrentProcess().PrivateMemorySize64;
-                    status.Append(Math.Round((decimal)(memory / 1024 / 1024), 2).ToString());
-                    status.Append(" MiB");
-                    status.Append(Utility.Font.Bold);
-                    status.Append(Utility.Font.Colour);
-
-                    status.Append(seperator);
-                    status.Append(Utility.Font.Colour);
-                    status.Append(Utility.Font.Colours.Purple);
-                    status.Append("Queries: ");
-                    status.Append(Utility.Font.Bold);
-                    status.Append(queries.ToString());
-                    status.Append(Utility.Font.Bold);
-                    status.Append(Utility.Font.Colour);
-
-                    status.Append(seperator);
-                    status.Append(Utility.Font.Colour);
-                    status.Append(Utility.Font.Colours.Blue);
-                    status.Append("Pastes: ");
-                    status.Append(Utility.Font.Bold);
-                    status.Append(pastes.ToString());
-                    status.Append(Utility.Font.Bold);
-                    status.Append(Utility.Font.Colour);
-
-                    response = status.ToString();
+                    response = string.Format("Uptime: " + Utility.Font.Bold + "{0}" + Utility.Font.Bold, 
+                        Utility.Time.ToDays(Math.Abs(Utility.Time.TimeSpanNow().Subtract(start).TotalSeconds)));
                     break;
 
                 case "hello":
@@ -420,10 +384,7 @@ namespace robokins
                         notify = true;
                     }
                     else
-                    {
                         response = string.Format("Latest forum topic: {0}{1}{0} - {2}", Utility.Font.Bold, defs[0], defs[1]);
-                        queries++;
-                    }
                     break;
 
                 case "define":
@@ -452,7 +413,6 @@ namespace robokins
                         response = string.Format("{0}{7}{0} made {1}6{2}{3}{2}{1} posts; {2}{4}{2} - {5} {1}14 on {6}",
                             new string[] { Utility.Font.Underlined, Utility.Font.Colour, Utility.Font.Bold,
                                 defs[0], defs[2], defs[1], defs[3], command[2] });
-                        queries++;
                     }
                     break;
 
@@ -465,10 +425,7 @@ namespace robokins
                         notify = true;
                     }
                     else
-                    {
                         response = def;
-                        queries++;
-                    }
                     break;
 
                 case "wikipedia":
@@ -487,11 +444,8 @@ namespace robokins
                         notify = true;
                     }
                     else
-                    {
                         response = string.Format("{0}{1}{0}: {2} - {3}",
                             new string[] { Utility.Font.Underlined, command[2], defs[0], defs[1] });
-                        queries++;
-                    }
                     break;
 
                 case "urbandictionary":
@@ -516,7 +470,6 @@ namespace robokins
                         if (def.Length > 450)
                             def = string.Concat(def.Substring(0, 450 - 4), " ...");
                         response = string.Format("{0}{1}{0}: {2}", Utility.Font.Underlined, command[2], def);
-                        queries++;
                     }
                     break;
 
@@ -536,11 +489,8 @@ namespace robokins
                         notify = true;
                     }
                     else
-                    {
                         response = string.Format("{3}{0}{3}: {2} - {1}",
                             new string[] { defs[0], defs[1], defs[2], Utility.Font.Bold });
-                        queries++;
-                    }
                     break;
 
                 case "search":
@@ -588,10 +538,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                        {
                             response = string.Format("Found \"{0}{1}{0}\": {2}", Utility.Font.Bold, defs[1], defs[0]);
-                            queries++;
-                        }
                     }
                     break;
 

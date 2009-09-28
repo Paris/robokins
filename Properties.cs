@@ -11,7 +11,7 @@ namespace robokins
         TcpClient irc;
         Client client;
         public static readonly char[] boundary = new char[] { ' ' };
-        int queries = 0, pastes = 0, sent = 0;
+        int sent = 0;
         string nick;
         bool quit = false;
         bool reading = false;
