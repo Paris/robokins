@@ -395,18 +395,6 @@ namespace robokins
 
                 #region Search
 
-                case "google":
-                    response = string.Concat("http://google.com/search?q=", HttpUtility.UrlPathEncode(command[2]).Replace("+", "%2B"));
-                    break;
-
-                case "yahoo":
-                    response = string.Concat("http://search.yahoo.com/search?p=", HttpUtility.UrlPathEncode(command[2]).Replace("+", "%2B"));
-                    break;
-
-                case "msn":
-                    response = string.Concat("http://search.msn.com/results.aspx?q=", HttpUtility.UrlPathEncode(command[2]).Replace("+", "%2B"));
-                    break;
-
                 case "rss":
                 case "r":
                     defs = Utility.Search.AutoHotkey.LatestRSS();
