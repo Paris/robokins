@@ -70,7 +70,6 @@
     <Compile Include="Tests.cs" />
     <Compile Include="Trigger.cs" />
     <Compile Include="IRC\User.cs" />
-    <Compile Include="Utility\AgeSexLocation.cs" />
     <Compile Include="Utility\EightBall.cs" />
     <Compile Include="Utility\Font.cs" />
     <Compile Include="Utility\HTTP.cs" />

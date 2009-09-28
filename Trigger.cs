@@ -183,10 +183,6 @@ namespace robokins
 
                 #region Fun
 
-                case "asl":
-                    response = Utility.AgeSexLocation.Response();
-                    break;
-
                 case "smile":
                 case "happy":
                 case "dance":
