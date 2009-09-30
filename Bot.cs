@@ -51,7 +51,7 @@ namespace robokins
                             paste.Stop();
 #endif
 
-#if LKINS
+#if LKINS || MIOKINS
                         bots.Stop();
 #endif
 
