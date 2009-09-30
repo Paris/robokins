@@ -8,6 +8,8 @@ namespace robokins
         const string Delimiter = ";";
         public const string Username = "robokins";
 
+        const string Website = "http://www.autohotkey.net/";
+
 #if DEBUG
         const string ChannelName = "testahk";
         const string Nick = Username + "|alt";

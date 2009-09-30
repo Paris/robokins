@@ -411,16 +411,10 @@ namespace robokins
                     if (!valid)
                         break;
 
-                    for (int i = 0; i < Commands.Names.Length; i++)
-                    {
-                        if (Commands.Names[i].ToLower() == def)
-                        {
-                            response = string.Format("\x02{0}6{1}{0}\x02: http://www.autohotkey.com/{2}",
-                                Utility.Font.Colour, Commands.Names[i], Commands.URIs[i]);
-                            break;
-                        }
-                    }
-                    if (response.Length == 0)
+                    defs = Utility.Manual.Lookup(def);
+                    if (defs != null && defs.Length == 2)
+                        response = string.Format("\x02{0}6{1}{0}\x02: " + Website + "{2}", Utility.Font.Colour, defs[0], defs[1]);
+                    else
                     {
                         defs = Utility.Search.Google.AutoHotkey(def);
                         if (defs == null)

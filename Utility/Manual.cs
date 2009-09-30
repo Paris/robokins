@@ -7,15 +7,13 @@ namespace robokins.Utility
 {
     class Manual
     {
-        const string Website = "http://www.autohotkey.com/";
+        static Dictionary<string, string[]> index = null;
 
-        static Dictionary<string, string> index = null;
-
-        public static string Lookup(string item)
+        public static string[] Lookup(string item)
         {
             CheckIndex();
             string key = item = NormaliseKey(item);
-            return index.ContainsKey(key) ? Website + index[key] : null;
+            return index.ContainsKey(key) ? index[key] : null;
         }
 
         static string NormaliseKey(string term)
@@ -32,11 +30,11 @@ namespace robokins.Utility
             if (index != null)
                 return;
 
-            index = new Dictionary<string, string>();
+            index = new Dictionary<string, string[]>();
 
             var reader = new StringReader((string)Resources.Manual);
             string line;
-            string key = null;
+            string term = null;
 
             while ((line = reader.ReadLine()) != null)
             {
@@ -51,21 +49,23 @@ namespace robokins.Utility
                 {
                     part = line.Substring(name.Length);
                     part = part.Substring(0, part.Length - end.Length);
-                    key = part;
+                    term = part.Trim();
+                    if (term.Length == 0)
+                        term = null;
                 }
                 else if (line.StartsWith(value))
                 {
                     part = line.Substring(value.Length);
                     part = part.Substring(0, part.Length - end.Length);
 
-                    if (key != null)
+                    if (term != null)
                     {
-                        key = NormaliseKey(key);
+                        string key = NormaliseKey(term);
                         if (key.Length != 0 && !index.ContainsKey(key))
-                            index.Add(key, part.Trim());
+                            index.Add(key, new string[] { term, part.Trim() });
                     }
 
-                    key = null;
+                    term = null;
                 }
             }
 
