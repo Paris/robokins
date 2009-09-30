@@ -39,7 +39,7 @@ namespace robokins.Utility.Search
             if (link > 0)
                 result = result.Substring(0, link);
 
-            return result.Length == 0 ? null : result;
+            return result.Length == 0 ? null : HttpUtility.HtmlDecode(result);
         }
     }
 }
