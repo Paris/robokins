@@ -15,7 +15,6 @@ namespace robokins.Utility
             {
                 HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(uri);
                 req.UserAgent = UserAgent;
-                
 
                 HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
                 if (resp.StatusCode != HttpStatusCode.OK)
@@ -25,7 +24,10 @@ namespace robokins.Utility
                 resp.Close();
                 return res;
             }
-            catch (Exception) { return string.Empty; }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
         }
 
         public static string DownloadPage(string uri, string data)
