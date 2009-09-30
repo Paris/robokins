@@ -77,7 +77,6 @@
     <Compile Include="Utility\Font.cs" />
     <Compile Include="Utility\HTTP.cs" />
     <Compile Include="Utility\Manual.cs" />
-    <Compile Include="Utility\Process.cs" />
     <Compile Include="Utility\Search\AutoHotkey.cs" />
     <Compile Include="Utility\Search\FMyLife.cs" />
     <Compile Include="Utility\Search\Google.cs" />
