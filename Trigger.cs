@@ -278,18 +278,6 @@ namespace robokins
 
                 #region Search
 
-                case "rss":
-                case "r":
-                    defs = Utility.Search.AutoHotkey.LatestRSS();
-                    if (defs == null)
-                    {
-                        response = "Unable to retrieve RSS at this time.";
-                        notify = true;
-                    }
-                    else
-                        response = string.Format("Latest forum topic: {0}{1}{0} - {2}", Utility.Font.Bold, defs[0], defs[1]);
-                    break;
-
                 case "define":
                 case "def":
                 case "d":

@@ -29,17 +29,6 @@ namespace robokins.Utility.Search
                 stats[1].Value };
         }
 
-        public static string[] LatestRSS()
-        {
-            string html = HTTP.DownloadPage("http://www.autohotkey.com/forum/rss.php?t=1");
-
-            GroupCollection group = Texts.ItemRSS.Match(html).Groups;
-            string[] res = new string[] { HttpUtility.HtmlDecode(group[1].Value), HttpUtility.HtmlDecode(group[2].Value) };
-            res[0] = res[0].Substring(res[0].IndexOf(" :: ") + 4).Replace("&quot;", "\"");
-
-            return res;
-        }
-
         public static string ForumStats()
         {
             string html = HTTP.DownloadPage("http://www.autohotkey.com/forum/");
