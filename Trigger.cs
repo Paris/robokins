@@ -307,18 +307,6 @@ namespace robokins
                     }
                     break;
 
-                case "forumstats":
-                case "whobbs":
-                    def = Utility.Search.AutoHotkey.ForumStats();
-                    if (def.Length == 0)
-                    {
-                        response = "Unable to retrieve forum statistics at this time.";
-                        notify = true;
-                    }
-                    else
-                        response = def;
-                    break;
-
                 case "wikipedia":
                 case "wiki":
                 case "w":

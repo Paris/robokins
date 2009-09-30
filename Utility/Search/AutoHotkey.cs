@@ -7,8 +7,6 @@ namespace robokins.Utility.Search
     {
         static Regex search = new Regex("<span class=\"maintitle\">Search found (\\d+) matches</span>");
         static Regex post = new Regex("</b>&nbsp; &nbsp;Posted: (.+?)&nbsp; &nbsp;Subject: <b><a href=\"post-(\\d+).html[^\"]*?\">([^<]*?)</a></b></span></td>");
-        static Regex forumstats = new Regex("<span class=\"gensmall\">In total there are [^\r\n]+?</span></td>");
-        static Regex statsafter = new Regex("\\s+&nbsp;.+?\\](?=Reg)");
 
         public static string[] UserStats(string user)
         {
@@ -27,24 +25,6 @@ namespace robokins.Utility.Search
                 forum + "post-" + stats[2].Value + ".html#" + stats[2].Value,
                 HttpUtility.HtmlDecode(stats[3].Value),
                 stats[1].Value };
-        }
-
-        public static string ForumStats()
-        {
-            string html = HTTP.DownloadPage("http://www.autohotkey.com/forum/");
-
-            GroupCollection group = forumstats.Match(html).Groups;
-            if (group.Count == 0)
-                return null;
-
-            string stats = Texts.StripTags.Replace(group[0].Value, string.Empty);
-            stats = statsafter.Replace(stats, "; ");
-
-            const int maxlength = 500;
-            if (stats.Length > maxlength)
-                stats = string.Concat(stats.Substring(0, maxlength - 4), " ...");
-
-            return stats;
         }
     }
 }
