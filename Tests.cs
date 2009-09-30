@@ -10,23 +10,39 @@ namespace robokins
         [Conditional("DEBUG")]
         static void Tests()
         {
-            //Console.WriteLine("FML: {0}", FMyLife.Random("") ?? "null");
+            string[] defs;
+            string def;
 
-            //var wiki = Wiki.Search("test");
-            //Console.WriteLine("Wiki: {0}", wiki == null ? "null" : string.Join(" ", wiki));
+            Console.WriteLine("FML: {0}", FMyLife.Random("") ?? "null");
+            Console.WriteLine();
 
-            //var gahk = Google.AutoHotkey("foobar");
-            //Console.WriteLine("Google AutoHotkey: {0}", gahk == null ? "null" : string.Join(" ", gahk));
+            defs = Wiki.Search("test");
+            Console.WriteLine("Wiki: {0}", defs == null ? "null" : string.Join(" ", defs));
+            Console.WriteLine();
 
-            //Console.WriteLine("Google Define: {0}", Google.Define("test") ?? "null");
+            defs = Google.AutoHotkey("foobar");
+            Console.WriteLine("Google AutoHotkey: {0}", defs == null ? "null" : string.Join(" ", defs));
+            Console.WriteLine();
 
-            //var msdn = MSDN.Search("foobar");
-            //Console.WriteLine("MSDN: {0}", msdn == null ? "null" : string.Join(" ", msdn));
+            Console.WriteLine("Google Define: {0}", Google.Define("test") ?? "null");
+            Console.WriteLine();
 
-            //var rss = AutoHotkey.LatestRSS();
-            //Console.WriteLine("RSS: {0}", string.Join(" - ", rss));
+            defs = MSDN.Search("createwindow");
+            Console.WriteLine("MSDN: {0}", defs == null ? "null" : string.Join(" ", defs));
+            Console.WriteLine();
 
-            Console.Read();
+            def = "dllcall()";
+            defs = Manual.Lookup(def);
+            Console.WriteLine("Manual \"{0}\": {1}: {2}", def, defs[0], defs[1]);
+            def = "nothing";
+            Console.WriteLine("Manual \"{0}\": {1}", def, Manual.Lookup(def) == null ? "null" : "not null");
+            Console.WriteLine();
+
+            Console.WriteLine();
+            Console.Write("Connect to IRC [y/n]?");
+            char mode = (char)Console.Read();
+            if (!(mode == 'y' || mode == 'Y'))
+                Environment.Exit(0);
         }
     }
 }
