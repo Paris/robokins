@@ -90,7 +90,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>CALL "$(ProjectDir)postbuild.bat" "$(TargetName)" "$(TargetDir)" "$(ProjectDir)"</PostBuildEvent>

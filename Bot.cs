@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using robokins.IRC;
 
 namespace robokins
@@ -8,7 +7,7 @@ namespace robokins
     {
         public Bot()
         {
-            Application.ApplicationExit += new EventHandler(delegate(object sender, EventArgs e)
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e)
             {
                 quit = true;
             });
