@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Security;
 using System.Net.Sockets;
+using System.Security;
 using System.Timers;
 using robokins.IRC;
 
