@@ -66,12 +66,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests.cs" />
     <Compile Include="Trigger.cs" />
     <Compile Include="IRC\User.cs" />
     <Compile Include="Utility\EightBall.cs" />
     <Compile Include="Utility\Font.cs" />
     <Compile Include="Utility\HTTP.cs" />
+    <Compile Include="Utility\Manual.cs" />
     <Compile Include="Utility\Process.cs" />
     <Compile Include="Utility\Search\AutoHotkey.cs" />
     <Compile Include="Utility\Search\FMyLife.cs" />
@@ -85,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
@@ -101,5 +106,14 @@
     <None Include="robokins.conf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Index.hhk" />
   </ItemGroup>
 </Project>
