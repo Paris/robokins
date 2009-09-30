@@ -11,7 +11,6 @@ namespace robokins.Utility
 
         public static string DownloadPage(string uri)
         {
-#if !CURL
             try
             {
                 HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(uri);
@@ -27,15 +26,10 @@ namespace robokins.Utility
                 return res;
             }
             catch (Exception) { return string.Empty; }
-#endif
-#if CURL
-            return Process.Output(string.Concat("curl -A \"", UserAgent, "\" \"", uri, "\""));
-#endif
         }
 
         public static string DownloadPage(string uri, string data)
         {
-#if !CURL
             byte[] buffer = Encoding.ASCII.GetBytes(data);
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(uri);
 
@@ -49,10 +43,6 @@ namespace robokins.Utility
 
             HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
             return (new StreamReader(resp.GetResponseStream())).ReadToEnd();
-#endif
-#if CURL
-            return Process.Output(string.Concat("curl", string.Format("-A \"{0}\" -d \"{1}\" \"{2}\"", UserAgent, data, uri)));
-#endif
         }
     }
 }
