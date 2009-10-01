@@ -258,8 +258,20 @@ namespace robokins
                 case "define":
                 case "def":
                 case "d":
-                    response = "Sorry, define is currently disabled.";
-                    notify = true;
+                    if (command[2].Length == 0)
+                    {
+                        response = "Please specify a search term.";
+                        notify = true;
+                        break;
+                    }
+                    def = Utility.Search.Google.Define(command[2]);
+                    if (string.IsNullOrEmpty(def))
+                    {
+                        response = "Could not find a definition for " + Utility.Font.Bold + command[2] + Utility.Font.Bold;
+                        notify = true;
+                    }
+                    else
+                        response = string.Format("{0}{1}{0}: {2}", new string[] { Utility.Font.Underlined, command[2], def });
                     break;
 
                 case "user":

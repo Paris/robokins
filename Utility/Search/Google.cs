@@ -32,7 +32,7 @@ namespace robokins.Utility.Search
             const string bound = "<li>";
             string result = Texts.StringBetween(html, bound, bound, 0);
 
-            if (result.Length == 0)
+            if (string.IsNullOrEmpty(result))
                 return null;
 
             int link = result.IndexOf(" ...<br>");
