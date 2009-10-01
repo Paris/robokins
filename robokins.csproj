@@ -92,14 +92,11 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>CALL "$(ProjectDir)postbuild.bat" "$(TargetName)" "$(TargetDir)" "$(ProjectDir)"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="postbuild.bat" />
     <None Include="RFC2812.url" />
-    <None Include="robokins-launch.sh">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="robokins.conf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

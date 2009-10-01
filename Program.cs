@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Security;
-using System.Threading;
 
 namespace robokins
 {
@@ -11,14 +9,6 @@ namespace robokins
         public static void Main()
         {
             Tests();
-
-            const int RetryDelay = 5000;
-            const int MaxRetry = 1 * 60 * 60 * 1000 / RetryDelay;
-
-            const string pid = Bot.Username + ".pid";
-            if (File.Exists(pid))
-                File.Delete(pid);
-            File.WriteAllText(pid, Process.GetCurrentProcess().Id.ToString());
 
             const string conf = Bot.Username + ".conf";
             if (!File.Exists(conf))
@@ -35,23 +25,7 @@ namespace robokins
 
             var bot = new Bot();
             bot.Password = passwd;
-
-            for (int i = 0; i < MaxRetry; i++)
-            {
-                try
-                {
-                    bot.Start();
-                }
-                catch (IOException) { }
-
-                if (bot.Stopped)
-                    break;
-                else
-                {
-                    Console.Error.WriteLine("Connection lost");
-                    Thread.Sleep(RetryDelay);
-                }
-            }
+            bot.Start();
         }
     }
 }
