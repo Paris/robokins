@@ -7,21 +7,13 @@ namespace robokins
     {
         public Bot()
         {
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e)
-            {
-                quit = true;
-            });
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { quit = true; });
         }
 
         public void Start()
         {
-            if (reading)
-                return;
-
-            reading = true;
             Connect();
             string line;
-
 
             while ((line = client.receive.ReadLine()) != null)
             {
@@ -50,9 +42,8 @@ namespace robokins
                             paste.Stop();
 #endif
 
-#if LKINS || MIOKINS
-                        bots.Stop();
-#endif
+                        if (bots != null)
+                            bots.Stop();
 
                         if (irc.Connected)
                         {
@@ -63,8 +54,6 @@ namespace robokins
                     }
                 }
             }
-
-            reading = false;
         }
     }
 }

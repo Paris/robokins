@@ -16,9 +16,8 @@ namespace robokins
 
             client = new Client(irc.GetStream());
             client.Pass(password);
-            //password.Dispose();
+            password.Dispose();
             client.User(Username, InitUsermode, RealName);
-            client.Private(Client.NickServ, "GHOST " + Nick);
             client.Nick(Nick);
             client.Mode(Nick, Usermode);
             
@@ -38,7 +37,8 @@ namespace robokins
             }
 #endif
 
-#if LKINS || MIOKINS
+#if !DEBUG && (LKINS || MIOKINS)
+            var random = new System.Random();
             bots = new Timer(60 * 60 * 1000 / 2);
             bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {

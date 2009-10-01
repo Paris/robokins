@@ -10,27 +10,17 @@ namespace robokins
     {
         TcpClient irc;
         Client client;
+        SecureString password;
         public static readonly char[] boundary = new char[] { ' ' };
         int sent = 0;
         bool quit = false;
-        bool reading = false;
-        TimeSpan start = Utility.Time.TimeSpanNow();
-        SecureString password;
-        Random random = new Random();
 
-        public bool Stopped
-        {
-            get { return quit; }
-        }
+        TimeSpan start = Utility.Time.TimeSpanNow();
+        Timer bots = null;
 
         public SecureString Password
         {
-            get { return password; }
             set { password = value; }
         }
-
-#if LKINS || MIOKINS
-        Timer bots;
-#endif
     }
 }
