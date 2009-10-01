@@ -290,9 +290,9 @@ namespace robokins
                     }
                     else
                     {
-                        response = string.Format("{0}{7}{0} made {1}6{2}{3}{2}{1} posts; {2}{4}{2} - {5} {1}14 on {6}",
+                        response = string.Format("{0}{7}{0} made {1}6{2}{3}{2}{1} post{8}; {2}{4}{2} - {5} {1}14 on {6}",
                             new string[] { Utility.Font.Underlined, Utility.Font.Colour, Utility.Font.Bold,
-                                defs[0], defs[2], defs[1], defs[3], command[2] });
+                                defs[0], defs[2], defs[1], defs[3], command[2], defs[0] == "1" ? string.Empty : "s" });
                     }
                     break;
 

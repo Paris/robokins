@@ -5,7 +5,7 @@ namespace robokins.Utility.Search
 {
     class AutoHotkey
     {
-        static Regex search = new Regex("<span class=\"maintitle\">Search found (\\d+) matches</span>");
+        static Regex search = new Regex("<span class=\"maintitle\">Search found (\\d+) match(?:es)?</span>");
         static Regex post = new Regex("</b>&nbsp; &nbsp;Posted: (.+?)&nbsp; &nbsp;Subject: <b><a href=\"post-(\\d+).html[^\"]*?\">([^<]*?)</a></b></span></td>");
 
         public static string[] UserStats(string user)
