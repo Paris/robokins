@@ -20,7 +20,6 @@ namespace robokins
             client.User(Username, InitUsermode, RealName);
             client.Private(Client.NickServ, "GHOST " + Nick);
             client.Nick(Nick);
-            nick = Nick;
             client.Mode(Nick, Usermode);
             
             Threading.Thread.Sleep(SendDelay * 3);

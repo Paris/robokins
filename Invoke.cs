@@ -15,7 +15,7 @@ namespace robokins
             bool query = message.Target[0] != '#';
             char first = message.Text[0];
             string word = message.Text.Split(Bot.boundary, 2, StringSplitOptions.RemoveEmptyEntries)[0].ToLowerInvariant();
-            string nickLow = nick.ToLowerInvariant();
+            string nickLow = Nick.ToLowerInvariant();
 
             if (first == '!' || first == '@')
             {
@@ -28,11 +28,11 @@ namespace robokins
             }
             else if (word.IndexOf(nickLow) == 0)
             {
-                bool range = nick.Length < word.Length;
-                bool bound = range ? !char.IsLetterOrDigit(word, nick.Length) : false;
+                bool range = Nick.Length < word.Length;
+                bool bound = range ? !char.IsLetterOrDigit(word, Nick.Length) : false;
                 if (!range || (range && bound))
                 {
-                    message.Text = message.Text.Substring(nick.Length + (bound ? 1 : 0)).Trim();
+                    message.Text = message.Text.Substring(Nick.Length + (bound ? 1 : 0)).Trim();
                     return message.Text.Length != 0;
                 }
                 else

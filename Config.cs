@@ -20,7 +20,6 @@ namespace robokins
 #endif
 
         const string Channel = "#" + ChannelName;
-        const string NickGroup = Delimiter + Nick + Delimiter + "\\ahk\\bot" + Delimiter;
         const string RealName = "IRC Bot";
         const string InitUsermode = "8";
         const string Usermode = "+CEiI";

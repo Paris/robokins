@@ -41,29 +41,6 @@ namespace robokins
                     }
                     break;
 
-                case "nick":
-                    if (auth)
-                    {
-                        def = command[1].Length == 0 ? Nick : command[1];
-                        if (NickGroup.IndexOf(string.Concat(Delimiter, Nick, Delimiter)) == -1)
-                        {
-                            response = string.Concat("For security reasons I will only change my nick to the ones registered in my group:" +
-                                Utility.Font.Underlined, NickGroup.Replace(Delimiter, Utility.Font.Underlined + " " + Utility.Font.Underlined));
-                            notify = true;
-                        }
-                        else
-                        {
-                            nick = def;
-                            client.send.WriteLine("NICK " + nick);
-                        }
-                    }
-                    else
-                    {
-                        response = "You do not have the authority make me change my nick.";
-                        notify = true;
-                    }
-                    break;
-
                 case "quiet":
                 case "mute":
                 case "m":
@@ -140,7 +117,7 @@ namespace robokins
                 case "sup":
                 case "hi":
                     response = string.Format("Hi {0}, I'm a helper bot for #{1}. To find out more about me type /msg {2} help",
-                        message.User.Nick, ChannelName, nick);
+                        message.User.Nick, ChannelName, Nick);
                     break;
 
                 case "pastebin":
@@ -420,7 +397,7 @@ namespace robokins
 
             #region Message
 
-            if (message.Target == nick)
+            if (message.Target == Nick)
                 notify = true;
 
             if (notify)

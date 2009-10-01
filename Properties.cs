@@ -12,7 +12,6 @@ namespace robokins
         Client client;
         public static readonly char[] boundary = new char[] { ' ' };
         int sent = 0;
-        string nick;
         bool quit = false;
         bool reading = false;
         TimeSpan start = Utility.Time.TimeSpanNow();
