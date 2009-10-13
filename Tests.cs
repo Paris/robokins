@@ -24,6 +24,10 @@ namespace robokins
             Console.WriteLine("Google AutoHotkey: {0}", defs == null ? "null" : string.Join(" ", defs));
             Console.WriteLine();
 
+            defs = Google.Search("meaning of life");
+            Console.WriteLine("Google Search: {0}", defs == null ? "null" : string.Join(" ", defs));
+            Console.WriteLine();
+
             Console.WriteLine("Google Define: {0}", Google.Define("test") ?? "null");
             Console.WriteLine();
 

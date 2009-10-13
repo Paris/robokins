@@ -274,6 +274,24 @@ namespace robokins
                         response = string.Format("{0}{1}{0}: {2}", new string[] { Utility.Font.Underlined, command[2], def });
                     break;
 
+                case "google":
+                case "g":
+                    if (command[2].Length == 0)
+                    {
+                        response = "Please specify a search term.";
+                        notify = true;
+                        break;
+                    }
+                    defs = Utility.Search.Google.Search(command[2]);
+                    if (defs == null)
+                    {
+                        response = "Could not find a definition for " + Utility.Font.Bold + command[2] + Utility.Font.Bold;
+                        notify = true;
+                    }
+                    else
+                        response = string.Format("{0} - {1}", defs[1], defs[0]);
+                    break;
+
                 case "user":
                 case "u":
                     if (command[2].Length == 0)
