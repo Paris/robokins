@@ -28,6 +28,7 @@ namespace robokins.Utility.Search
                 case "work":
                 case "health":
                 case "sex":
+                case "intimacy":
                 case "miscellaneous":
                     return Get(type + "/1/nocomment");
 
