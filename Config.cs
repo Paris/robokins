@@ -40,12 +40,5 @@ namespace robokins
         const int PasteFreq = 2500;
         const string PasteURI = "http://paste.autohotkey.net/";
 #endif
-
-#if RR
-        const int RRTicks = 60 * 1000;
-        const int RRBan = 1 * RRTicks;
-        const int RRWon = 360 * RRTicks;
-        const string RRBanFlag = "b";
-#endif
     }
 }
