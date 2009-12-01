@@ -3,7 +3,8 @@ namespace robokins.Utility
 {
     class EightBall
     {
-        static readonly string[] replies = new string[] {
+        static readonly string[] replies = new string[]
+        {
             "As I see it, yes.",
             "Ask again later.",
             "Better not tell you now.",

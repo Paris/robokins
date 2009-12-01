@@ -1,6 +1,6 @@
 ﻿using System.Net.Sockets;
+using System.Threading;
 using robokins.IRC;
-using Threading = System.Threading;
 
 namespace robokins
 {
@@ -19,7 +19,7 @@ namespace robokins
             client.Nick(Nick);
             client.Mode(Nick, Usermode);
             
-            Threading.Thread.Sleep(SendDelay * 3);
+            Thread.Sleep(SendDelay * 3);
 
             client.Join(Channel, string.Empty);
 

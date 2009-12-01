@@ -59,7 +59,7 @@
     <Compile Include="IRC\Client\UserQueries.cs" />
     <Compile Include="IRC\Client\ServerQueries.cs" />
     <Compile Include="IRC\ReceivedMessage.cs" />
-    <Compile Include="Operations.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="Paste.cs" />

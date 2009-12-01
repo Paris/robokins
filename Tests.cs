@@ -44,6 +44,7 @@ namespace robokins
 
             Console.WriteLine();
             Console.Write("Connect to IRC [y/n]? ");
+
             char mode = (char)Console.Read();
             if (!(mode == 'y' || mode == 'Y'))
                 Environment.Exit(0);

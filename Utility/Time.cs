@@ -11,7 +11,11 @@ namespace robokins.Utility
             return new TimeSpan(now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
         }
 
-        public static string ToDays(int s) { return ToDays((double)s); }
+        public static string ToDays(int s)
+        {
+            return ToDays((double)s);
+        }
+
         public static string ToDays(double s)
         {
             int[] t = new int[] { 60 * 60 * 24, 60 * 60, 60, 1 };
