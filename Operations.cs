@@ -1,22 +1,11 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
-using robokins.IRC;
 
 namespace robokins
 {
     partial class Bot
     {
-        bool Op
-        {
-            set { Message(Client.ChanServ, string.Format("{0}OP {1} {2}", value ? "" : "DE", Channel, Nick)); }
-        }
-
-        bool IsChannel(string target)
-        {
-            return target.Length > 1 && target[0] == '#';
-        }
-
         void Message(string target, string text)
         {
             Message(target, text, false);
