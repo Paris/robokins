@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;PASTE RR LKINS MIOKINS</DefineConstants>
+    <DefineConstants>DEBUG;PASTE FUNBOTS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,7 +31,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>PASTE LKINS MIOKINS</DefineConstants>
+    <DefineConstants>PASTE FUNBOTS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +46,7 @@
   -->
   <ItemGroup>
     <Compile Include="Bot.cs" />
+    <Compile Include="FunBots.cs" />
     <Compile Include="Invoke.cs" />
     <Compile Include="IRC\Client\Channel.cs" />
     <Compile Include="IRC\Client\Connection.cs" />

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Security;
-using System.Timers;
 using robokins.IRC;
 
 namespace robokins
@@ -16,7 +15,6 @@ namespace robokins
         bool quit = false;
 
         TimeSpan start = Utility.Time.TimeSpanNow();
-        Timer bots = null;
 
         public SecureString Password
         {

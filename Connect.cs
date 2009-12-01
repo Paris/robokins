@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Net.Sockets;
-using System.Timers;
+﻿using System.Net.Sockets;
 using robokins.IRC;
 using Threading = System.Threading;
 
@@ -25,31 +23,10 @@ namespace robokins
 
             client.Join(Channel, string.Empty);
 
-#if PASTE
-            paste = new Timer(PasteFreq);
-            if (Directory.Exists(PasteSync))
-            {
-                pasteDir = new DirectoryInfo(PasteSync);
-                foreach (FileInfo file in pasteDir.GetFiles())
-                    file.Delete();
-                paste.Elapsed += new ElapsedEventHandler(PasteCheck);
-                paste.Start();
-            }
-#endif
+            PasteSetup();
 
-#if !DEBUG && (LKINS || MIOKINS)
-            var random = new System.Random();
-            bots = new Timer(60 * 60 * 1000 / 2);
-            bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
-            {
-#if LKINS
-                Message("Lolikins", "!stuff");
-#endif
-#if MIOKINS
-                Message("miokins", string.Concat("`mio ", random.Next(1, 6).ToString()));
-#endif
-            });
-            bots.Start();
+#if !DEBUG
+            FunBotsSetup();
 #endif
         }
     }

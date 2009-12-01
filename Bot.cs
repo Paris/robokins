@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using robokins.IRC;
 
 namespace robokins
@@ -10,6 +11,12 @@ namespace robokins
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { quit = true; });
         }
 
+        [Conditional("DEBUG")]
+        void Echo(string text)
+        {
+            Console.WriteLine(text);
+        }
+
         public void Start()
         {
             Connect();
@@ -17,9 +24,7 @@ namespace robokins
 
             while ((line = client.receive.ReadLine()) != null)
             {
-#if DEBUG
-                Console.WriteLine(line);
-#endif
+                Echo(line);
                 string[] msg = line.Split(boundary, 3);
 
                 if (msg[0] == "PING")
@@ -37,12 +42,10 @@ namespace robokins
 
                     if (quit)
                     {
-#if PASTE
-                        if (paste.Enabled)
+                        if (paste != null && paste.Enabled)
                             paste.Stop();
-#endif
 
-                        if (bots != null)
+                        if (bots != null && bots.Enabled)
                             bots.Stop();
 
                         if (irc.Connected)
