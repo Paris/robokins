@@ -11,7 +11,8 @@ namespace robokins.IRC
             send.Write("PASS ");
             IntPtr bstr = Marshal.SecureStringToBSTR(password);
             send.WriteLine(Marshal.PtrToStringUni(bstr));
-            Marshal.ZeroFreeBSTR(bstr);
+            try { Marshal.ZeroFreeBSTR(bstr); }
+            catch (MissingMethodException) { }
             send.Flush();
         }
 
