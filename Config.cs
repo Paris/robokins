@@ -3,7 +3,7 @@ namespace robokins
 {
     partial class Bot
     {
-        const string Server = "chat.us.freenode.net";
+        const string Server = "irc.freenode.net";
         const int Port = 6667;
         const string Delimiter = ";";
         public const string Username = "robokins";
