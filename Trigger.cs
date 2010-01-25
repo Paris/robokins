@@ -243,11 +243,16 @@ namespace robokins
                 case "loli":
                 case "onee":
                 case "lion":
+                case "imouto":
+                case "deer":
+                case "shota":
+                case "pantsu":
                 case "stuff":
-                case "lolistats":
-                case "oneestats":
-                case "lionstats":
                 case "stuffstats":
+                case "top10":
+                case "quote":
+                case "qtop10":
+                case "qlatest":
                 case "mio":
                     return;
 
