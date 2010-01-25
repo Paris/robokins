@@ -25,10 +25,6 @@ namespace robokins
         const string Usermode = "+CEiI";
 
         const string Operators = Delimiter + "pdpc/supporter/student/titan" +
-                                 Delimiter + "unaffiliated/ahklerner" +
-                                 Delimiter + "unaffiliated/chalamius" +
-                                 Delimiter + "unaffiliated/k3ph" +
-                                 Delimiter + "unaffiliated/skwire" +
                                  Delimiter;
 
         const int ReceiveDelay = 100;
