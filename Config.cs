@@ -22,7 +22,7 @@ namespace robokins
         const string Channel = "#" + ChannelName;
         const string RealName = "IRC Bot";
         const string InitUsermode = "8";
-        const string Usermode = "+CEiI";
+        const string Usermode = "+i";
 
         const string Operators = Delimiter + "pdpc/supporter/student/titan" +
                                  Delimiter;
