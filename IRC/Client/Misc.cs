@@ -1,4 +1,5 @@
-﻿
+﻿using System.Diagnostics;
+
 namespace robokins.IRC
 {
     partial class Client
@@ -19,17 +20,16 @@ namespace robokins.IRC
 
         public void Error(string message)
         {
-            send.Write("PONG ");
+            send.Write("ERROR ");
             send.WriteLine(message);
             send.Flush();
         }
 
-#if DEBUG
+        [Conditional("DEBUG")]
         public void Raw(string message)
         {
             send.WriteLine(message);
             send.Flush();
         }
-#endif
     }
 }
