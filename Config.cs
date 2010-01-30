@@ -7,6 +7,7 @@ namespace robokins
         const int Port = 6667;
         const string Delimiter = ";";
         public const string Username = "robokins";
+        public const bool LoginUsername = true; // login with PASS <username>:<password> for ircd-seven
 
         const string Website = "http://www.autohotkey.net/";
 
