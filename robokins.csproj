@@ -111,4 +111,7 @@
   <ItemGroup>
     <None Include="Resources\Index.hhk" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+  </ItemGroup>
 </Project>
