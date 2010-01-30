@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 using System.Threading;
 using robokins.IRC;
 
@@ -15,7 +16,7 @@ namespace robokins
             client = new Client(irc.GetStream());
             client.Pass(password);
             password.Dispose();
-            client.User(Username, InitUsermode, RealName);
+            client.User(Environment.UserName, InitUsermode, RealName);
             client.Nick(Nick);
             client.Mode(Nick, Usermode);
             
