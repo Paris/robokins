@@ -25,10 +25,7 @@ namespace robokins
             client.Join(Channel, string.Empty);
 
             PasteSetup();
-
-#if !DEBUG
             FunBotsSetup();
-#endif
         }
     }
 }
