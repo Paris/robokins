@@ -10,11 +10,10 @@ namespace robokins
 
         const string Website = "http://www.autohotkey.net/";
 
-#if DEBUG
+#if DEBUG && !PRODUCTION
         const string ChannelName = "testahk";
         const string Nick = Username + "|alt";
-#endif
-#if !DEBUG
+#else
         const string ChannelName = "ahk";
         const string Nick = Username;
 #endif
