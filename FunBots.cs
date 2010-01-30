@@ -15,7 +15,6 @@ namespace robokins
             bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
                 Message("Lolikins", "!stuff");
-                Message("miokins", string.Concat("`mio ", random.Next(1, 6).ToString()));
             });
             bots.Start();
         }
