@@ -14,6 +14,7 @@ namespace robokins
         [Conditional("DEBUG")]
         void Echo(string text)
         {
+            Console.Write(DateTime.Now.ToUniversalTime().ToString("[HH:mm:ss] "));
             Console.WriteLine(text);
         }
 
