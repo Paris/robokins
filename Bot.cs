@@ -29,10 +29,7 @@ namespace robokins
                 string[] msg = line.Split(boundary, 3);
 
                 if (msg[0] == "PING")
-                {
-                    client.send.Write("PONG ");
-                    client.send.WriteLine(msg[1]);
-                }
+                    client.Pong(msg[1]);
                 else if (msg[1] == "PRIVMSG")
                 {
                     ReceivedMessage message;
