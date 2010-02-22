@@ -211,17 +211,11 @@ namespace robokins
                 case "what":
                 case "?":
                 case "=":
-                    response = "Sorry, I am currently unable to calculate equations.";
-                    notify = true;
-                    break;
-
                 case "xdcc":
-                    response = "Sorry, I cannot send any files.";
-                    notify = true;
-                    break;
-
                 case "tell":
-                    response = "Sorry, tell is currently disabled.";
+                case "fmylife":
+                case "fml":
+                    response = "Sorry, this feature has been disabled.";
                     notify = true;
                     break;
 
