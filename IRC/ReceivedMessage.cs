@@ -5,17 +5,17 @@ namespace robokins.IRC
 {
     class ReceivedMessage
     {
-        public bool Notice;
-        public User User;
-        public string Target;
-        public string Text;
+        bool notice;
+        User user;
+        string target;
+        string text;
 
-        const string privmsg = "PRIVMSG";
-        const string notice = "NOTICE";
+        const string privmsgTxt = "PRIVMSG";
+        const string noticeTxt = "NOTICE";
 
         public ReceivedMessage(string query)
         {
-            if (query.Length > Client.BufferSize || query.Length < (":x!y " + notice + " z :").Length || query[0] != ':')
+            if (query.Length > Client.BufferSize || query.Length < (":x!y " + noticeTxt + " z :").Length || query[0] != ':')
                 throw new ArgumentOutOfRangeException();
 
             int z;
@@ -26,28 +26,50 @@ namespace robokins.IRC
             z = query.IndexOf(':', 1);
             if (z == -1)
                 throw new ArgumentOutOfRangeException();
-            Text = z + 1 >= query.Length ? string.Empty : query.Substring(z + 1);
+            text = z + 1 >= query.Length ? string.Empty : query.Substring(z + 1);
 
             string[] values = query.Substring(1, z - 2).Split(Bot.boundary);
 
             if (values.Length != 3)
                 throw new ArgumentOutOfRangeException();
 
-            User = new User(values[0]);
+            user = new User(values[0]);
 
             switch (values[1].ToUpperInvariant())
             {
-                case privmsg:
-                    Notice = false;
+                case privmsgTxt:
+                    notice = false;
                     break;
-                case notice:
-                    Notice = true;
+                case noticeTxt:
+                    notice = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            Target = values[2];
+            target = values[2];
+        }
+
+        public bool Notice
+        {
+            get { return notice; }
+        }
+
+        public User User
+        {
+            get { return user; }
+        }
+
+        public string Target
+        {
+            get { return target; }
+            set { target = value; }
+        }
+
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
         }
 
         public override string ToString()
@@ -55,14 +77,14 @@ namespace robokins.IRC
             var buf = new StringBuilder(Client.BufferSize);
             char bound = Bot.boundary[0];
             buf.Append(':');
-            buf.Append(User.ToString());
+            buf.Append(user.ToString());
             buf.Append(bound);
-            buf.Append(Notice ? notice : privmsg);
+            buf.Append(notice ? noticeTxt : privmsgTxt);
             buf.Append(bound);
-            buf.Append(Target);
+            buf.Append(target);
             buf.Append(bound);
             buf.Append(':');
-            buf.Append(Text);
+            buf.Append(text);
             if (buf.Length > Client.BufferSize)
                 throw new ArgumentOutOfRangeException();
             return buf.ToString();
