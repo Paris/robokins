@@ -116,8 +116,7 @@ namespace robokins
                 case "hey":
                 case "sup":
                 case "hi":
-                    response = string.Format("Hi {0}, I'm a helper bot for #{1}. To find out more about me type /msg {2} help",
-                        message.User.Nick, ChannelName, Nick);
+                    response = string.Format("Hi, I'm a helper bot for #{0}.", ChannelName);
                     break;
 
                 case "pastebin":
@@ -134,8 +133,7 @@ namespace robokins
                     break;
 
                 case "help":
-                    response = string.Format("Hello {0}, how can we help? If you have not already please read the tutorial at " +
-                        "http://www.autohotkey.com/docs/Tutorial.htm", message.User.Nick);
+                    response = "Hello, how can we help? If you have not already please read the tutorial at http://www.autohotkey.com/docs/Tutorial.htm";
                     break;
 
                 case "about":
