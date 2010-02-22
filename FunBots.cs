@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Timers;
 
 namespace robokins
@@ -10,7 +11,7 @@ namespace robokins
         [Conditional("FUNBOTS")]
         void FunBotsSetup()
         {
-            var random = new System.Random();
+            var random = new Random();
             bots = new Timer(60 * 60 * 1000 / 2);
             bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
