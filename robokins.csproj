@@ -79,7 +79,6 @@
     <Compile Include="Utility\HTTP.cs" />
     <Compile Include="Utility\Manual.cs" />
     <Compile Include="Utility\Search\AutoHotkey.cs" />
-    <Compile Include="Utility\Search\FMyLife.cs" />
     <Compile Include="Utility\Search\Google.cs" />
     <Compile Include="Utility\Search\MSDN.cs" />
     <Compile Include="Utility\Search\UrbanDictionary.cs" />

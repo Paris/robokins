@@ -13,9 +13,6 @@ namespace robokins
             string[] defs;
             string def;
 
-            Console.WriteLine("FML: {0}", FMyLife.Random() ?? "null");
-            Console.WriteLine();
-
             defs = Wiki.Search("test");
             Console.WriteLine("Wiki: {0}", defs == null ? "null" : string.Join(" ", defs));
             Console.WriteLine();

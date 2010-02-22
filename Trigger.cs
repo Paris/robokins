@@ -169,18 +169,6 @@ namespace robokins
                     action = true;
                     break;
 
-                case "fmylife":
-                case "fml":
-                    def = Utility.Search.FMyLife.Random(command[1]);
-                    if (def.Length == 0)
-                    {
-                        response = "Unable to retrieve FMyLife at this time.";
-                        notify = true;
-                    }
-                    else
-                        response = def;
-                    break;
-
                 case "magicball":
                 case "eightball":
                 case "8ball":
