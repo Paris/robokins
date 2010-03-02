@@ -6,7 +6,7 @@ namespace robokins
         const string Server = "irc.freenode.net";
         const int Port = 6667;
         const string Delimiter = ";";
-        public const string Username = "robokins";
+        internal const string Username = "robokins";
 
         const string Website = "http://www.autohotkey.net/";
 
