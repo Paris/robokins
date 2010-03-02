@@ -7,12 +7,12 @@ namespace robokins
 {
     partial class Bot
     {
-        void Trigger(ReceivedMessage message)
+        bool Trigger(ReceivedMessage message)
         {
             #region Variables
 
             if (!Invoke(message))
-                return;
+                return false;
 
             bool notify = false;
             bool action = false;
@@ -234,7 +234,7 @@ namespace robokins
                 case "qtop10":
                 case "qlatest":
                 case "mio":
-                    return;
+                    return true;
 
                 #endregion
 
@@ -426,6 +426,8 @@ namespace robokins
 
             if (response.Length != 0)
                 Message(message.Target, response, notify);
+
+            return true;
 
             #endregion
         }
