@@ -28,8 +28,7 @@ namespace robokins
 
             #endregion
 
-            var bot = new Bot();
-            bot.Password = passwd;
+            var bot = new Bot() { Password = passwd };
             bot.Start();
         }
     }
