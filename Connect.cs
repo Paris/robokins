@@ -25,6 +25,7 @@ namespace robokins
 
             PasteSetup();
             FunBotsSetup();
+            TweetSetup();
         }
     }
 }

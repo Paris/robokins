@@ -36,7 +36,8 @@ namespace robokins
                     try { message = new ReceivedMessage(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
-                    Trigger(message);
+                    if (!Trigger(message))
+                        Tweet(message);
 
                     if (quit)
                     {
@@ -45,6 +46,9 @@ namespace robokins
 
                         if (bots != null && bots.Enabled)
                             bots.Stop();
+
+                        if (tweets != null && tweets.Enabled)
+                            tweets.Stop();
 
                         if (irc.Connected)
                         {

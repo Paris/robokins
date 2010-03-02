@@ -33,5 +33,8 @@ namespace robokins
         const string PasteSync = "/home/titan/public_html/paste/sync";
         const int PasteFreq = 2500;
         const string PasteURI = "http://paste.autohotkey.net/";
+
+        internal const string TwitterUsername = "titan@autohotkey.net";
+        const string TwitterStatusPrefix = "http://twitter.com/" + Username + "/status/";
     }
 }

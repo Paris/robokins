@@ -31,7 +31,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>PASTE FUNBOTS</DefineConstants>
+    <DefineConstants>PASTE FUNBOTS TWEET</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +46,7 @@
   -->
   <ItemGroup>
     <Compile Include="Bot.cs" />
+    <Compile Include="Twitter.cs" />
     <Compile Include="FunBots.cs" />
     <Compile Include="Invoke.cs" />
     <Compile Include="IRC\Client\Channel.cs" />
@@ -86,10 +87,7 @@
     <Compile Include="Utility\Slap.cs" />
     <Compile Include="Utility\Texts.cs" />
     <Compile Include="Utility\Time.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Web" />
+    <Compile Include="Utility\Twitter.cs" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>
@@ -112,5 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
 </Project>
