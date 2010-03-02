@@ -15,7 +15,6 @@ namespace robokins
 
             client = new Client(irc.GetStream());
             client.Pass(password);
-            password.Dispose();
             client.User(Environment.UserName, InitUsermode, RealName);
             client.Nick(Nick);
             client.Mode(Nick, Usermode);
