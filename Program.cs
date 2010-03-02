@@ -17,13 +17,6 @@ namespace robokins
                 throw new FileNotFoundException("Password file not found.", conf);
 
             var passwd = new SecureString();
-            
-            if (Bot.LoginUsername)
-            {
-                foreach (char letter in Bot.Username)
-                    passwd.AppendChar(letter);
-                passwd.AppendChar(':');
-            }
 
             var stream = new StreamReader(conf);
             while (!stream.EndOfStream)
