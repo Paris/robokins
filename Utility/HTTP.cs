@@ -32,8 +32,17 @@ namespace robokins.Utility
 
         public static string DownloadPage(string uri, string data)
         {
+            return DownloadPage(uri, data, null);
+        }
+
+        public static string DownloadPage(string uri, string data, NetworkCredential auth)
+        {
+            ServicePointManager.Expect100Continue = false;
             byte[] buffer = Encoding.ASCII.GetBytes(data);
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(uri);
+
+            if (auth != null)
+                req.Credentials = auth;
 
             req.Method = "POST";
             req.ContentType = "application/x-www-form-urlencoded";
