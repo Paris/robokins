@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security;
 using robokins.Utility;
 using robokins.Utility.Search;
 
@@ -8,7 +9,7 @@ namespace robokins
     partial class Program
     {
         [Conditional("DEBUG")]
-        static void Tests()
+        static void Tests(SecureString password)
         {
             string[] defs;
             string def;

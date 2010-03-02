@@ -8,8 +8,6 @@ namespace robokins
     {
         public static void Main()
         {
-            Tests();
-
             #region Password
 
             const string conf = Bot.Username + ".conf";
@@ -27,6 +25,8 @@ namespace robokins
                 throw new ArgumentNullException("Password is blank.");
 
             #endregion
+
+            Tests(passwd);
 
             var bot = new Bot() { Password = passwd };
             bot.Start();
