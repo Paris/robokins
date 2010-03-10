@@ -18,7 +18,7 @@ namespace robokins
             var passwd = new SecureString();
             const string key = "password";
 
-            if (table.ContainsKey(key) && string.IsNullOrEmpty(table[key]))
+            if (table.ContainsKey(key) && !string.IsNullOrEmpty(table[key]))
             {
                 foreach (char letter in table[key])
                     passwd.AppendChar(letter);
