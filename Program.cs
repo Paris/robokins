@@ -12,14 +12,19 @@ namespace robokins
 
             const string conf = Bot.Username + ".conf";
             if (!File.Exists(conf))
-                throw new FileNotFoundException("Password file not found.", conf);
+                throw new FileNotFoundException("Configuration file not found.", conf);
 
+            var table = ConfRead(new StreamReader(conf));
             var passwd = new SecureString();
+            const string key = "password";
 
-            var stream = new StreamReader(conf);
-            while (!stream.EndOfStream)
-                passwd.AppendChar((char)stream.Read());
-            passwd.MakeReadOnly();
+            if (table.ContainsKey(key) && string.IsNullOrEmpty(table[key]))
+            {
+                foreach (char letter in table[key])
+                    passwd.AppendChar(letter);
+                passwd.MakeReadOnly();
+                table.Remove(key);
+            }
 
             if (passwd.Length == 0)
                 throw new ArgumentNullException("Password is blank.");
