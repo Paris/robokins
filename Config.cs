@@ -36,5 +36,6 @@ namespace robokins
 
         internal const string TwitterUsername = "titan@autohotkey.net";
         const string TwitterStatusPrefix = "http://twitter.com/" + Username + "/status/";
+        const string TwitterIgnore = Delimiter + "lolikins" + Delimiter;
     }
 }

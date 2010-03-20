@@ -50,6 +50,7 @@ namespace robokins
                 message.Target.Length == 0 || message.Target[0] != '#' ||
                 message.Text.Length < Twitter.MaxLength / 5 ||
                 message.Text[0] == '\x01' ||
+                TwitterIgnore.Contains(string.Concat(Delimiter, message.User.Nick, Delimiter)) ||
                 message.Text.Length + message.User.Nick.Length + prefix.Length > Twitter.MaxLength)
                 return;
 
