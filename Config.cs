@@ -23,8 +23,7 @@ namespace robokins
         const string InitUsermode = "8";
         const string Usermode = "+iR";
 
-        const string Operators = Delimiter + "pdpc/supporter/student/titan" +
-                                 Delimiter;
+        const string Operators = Delimiter + "pdpc/supporter/student/titan" + Delimiter;
 
         const int ReceiveDelay = 100;
         const int SendDelay = ReceiveDelay * 2;
