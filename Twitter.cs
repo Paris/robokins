@@ -33,7 +33,7 @@ namespace robokins
                 "You wish",
             };
 
-            tweets = new Timer(60 * 60 * 1000 * 3);
+            tweets = new Timer(1000 * 60 * 60 * 6);
             tweets.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
                 tweetNext = true;
