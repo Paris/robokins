@@ -191,11 +191,9 @@ namespace robokins
 
                 case "tdelete":
                     {
-                        bool granted = auth || tweetLast.Nick == message.User.Nick;
-
                         if (tweetLast == null)
                             response = "Last tweet information not available.";
-                        else if (granted)
+                        else if (auth || tweetLast.Nick == message.User.Nick)
                         {
                             response = Utility.Twitter.Delete(TwitterUsername, password, tweetId) ?
                                 "Deleted last tweet." : "Could not delete last tweet.";
