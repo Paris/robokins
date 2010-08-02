@@ -14,11 +14,6 @@ namespace robokins
             string[] defs;
             string def;
 
-            def = Twitter.Update(Bot.TwitterUsername, password, "This is a test message :D (" + Environment.TickCount.ToString() + ")");
-            Console.WriteLine("Twitter update: {0}", def);
-            Console.WriteLine("Twitter delete: {0}", Twitter.Delete(Bot.TwitterUsername, password, def));
-            Console.WriteLine();
-
             defs = Wiki.Search("test");
             Console.WriteLine("Wiki: {0}", defs == null ? "null" : string.Join(" ", defs));
             Console.WriteLine();

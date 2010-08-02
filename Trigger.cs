@@ -187,39 +187,6 @@ namespace robokins
 
                 #endregion
 
-                #region Twitter
-
-                case "tdelete":
-                    {
-                        if (tweetLast == null)
-                            response = "Last tweet information not available.";
-                        else if (auth || tweetLast.Nick == message.User.Nick)
-                        {
-                            response = Utility.Twitter.Delete(TwitterUsername, password, tweetId) ?
-                                "Deleted last tweet." : "Could not delete last tweet.";
-                            tweetId = null;
-                            tweetLast = null;
-                        }
-                        else
-                            response = string.Format("Only the author {0} can request a removal.", tweetLast.Nick);
-
-                        notify = true;
-                    }
-                    break;
-
-                case "tnext":
-                    if (auth)
-                    {
-                        tweetNext = true;
-                        response = "Preparing to tweet the next suitable message.";
-                    }
-                    else
-                        response = "You do not have the permission to request a tweet.";
-                    notify = true;
-                    break;
-
-                #endregion
-
                 #region Utilities
 
                 case "random":
