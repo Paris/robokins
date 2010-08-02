@@ -7,7 +7,7 @@ namespace robokins.Utility
 {
     class HTTP
     {
-        const string UserAgent = "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.3) Gecko/20100404 Ubuntu/10.04 (lucid) Firefox/3.6.3";
+        const string UserAgent = "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.8) Gecko/20100722 Ubuntu/10.04 (lucid) Firefox/3.6.8";
 
         public static string DownloadPage(string uri)
         {
