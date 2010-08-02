@@ -36,6 +36,8 @@ namespace robokins
                     try { message = new ReceivedMessage(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
+                    Trigger(message);
+
                     if (quit)
                     {
                         if (paste != null && paste.Enabled)
