@@ -37,6 +37,10 @@ namespace robokins
             Console.WriteLine("UrbanDictionary: {0}", def);
             Console.WriteLine();
 
+            def = HTTP.ShortUrl("http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=louth&sll=53.800651,-4.064941&sspn=33.219383,38.803711&ie=UTF8&hq=&hnear=Louth,+United+Kingdom&ll=53.370272,-0.004034&spn=0.064883,0.075788&z=14");
+            Console.WriteLine("Short URL: {0}", def);
+            Console.WriteLine();
+
             def = "dllcall()";
             defs = Manual.Lookup(def);
             Console.WriteLine("Manual \"{0}\": {1}: {2}", def, defs[0], defs[1]);
