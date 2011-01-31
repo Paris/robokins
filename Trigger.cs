@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Text;
 using robokins.IRC;
+using robokins.Utility;
 
 namespace robokins
 {
@@ -274,7 +275,7 @@ namespace robokins
                         notify = true;
                     }
                     else
-                        response = string.Format("{0} - {1}", defs[1], defs[0]);
+                        response = string.Format("{0} - {1}", defs[1], HTTP.ShortUrl(defs[0]));
                     break;
 
                 case "user":
@@ -295,7 +296,7 @@ namespace robokins
                     {
                         response = string.Format("{0}{7}{0} made {1}6{2}{3}{2}{1} post{8}; {2}{4}{2} - {5} {1}14 on {6}",
                             new string[] { Utility.Font.Underlined, Utility.Font.Colour, Utility.Font.Bold,
-                                defs[0], defs[2], defs[1], defs[3], command[2], defs[0] == "1" ? string.Empty : "s" });
+                                defs[0], defs[2], HTTP.ShortUrl(defs[1]), defs[3], command[2], defs[0] == "1" ? string.Empty : "s" });
                     }
                     break;
 
@@ -316,7 +317,7 @@ namespace robokins
                     }
                     else
                         response = string.Format("{0}{1}{0}: {2} - {3}",
-                            new string[] { Utility.Font.Underlined, command[2], defs[0], defs[1] });
+                            new string[] { Utility.Font.Underlined, command[2], defs[0], HTTP.ShortUrl(defs[1]) });
                     break;
 
                 case "urbandictionary":
@@ -362,7 +363,7 @@ namespace robokins
                     }
                     else
                         response = string.Format("{3}{0}{3}: {2} - {1}",
-                            new string[] { defs[0], defs[1], defs[2], Utility.Font.Bold });
+                            new string[] { defs[0], HTTP.ShortUrl(defs[1]), defs[2], Utility.Font.Bold });
                     break;
 
                 case "search":
@@ -394,7 +395,7 @@ namespace robokins
 
                     defs = Utility.Manual.Lookup(def);
                     if (defs != null && defs.Length == 2)
-                        response = string.Format("\x02{0}6{1}{0}\x02: " + Website + "{2}", Utility.Font.Colour, defs[0], defs[1]);
+                        response = string.Format("\x02{0}6{1}{0}\x02: {2}", Utility.Font.Colour, defs[0], HTTP.ShortUrl(Website + defs[1]));
                     else
                     {
                         defs = Utility.Search.Google.AutoHotkey(def);
@@ -404,7 +405,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            response = string.Format("Found \"{0}{1}{0}\": {2}", Utility.Font.Bold, defs[1], defs[0]);
+                            response = string.Format("Found \"{0}{1}{0}\": {2}", Utility.Font.Bold, defs[1], HTTP.ShortUrl(defs[0]));
                     }
                     break;
 
