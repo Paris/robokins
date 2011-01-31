@@ -30,12 +30,7 @@ namespace robokins.Utility
             }
         }
 
-        public static string DownloadPage(string uri, string data)
-        {
-            return DownloadPage(uri, data, null);
-        }
-
-        public static string DownloadPage(string uri, string data, NetworkCredential auth)
+        public static string DownloadPage(string uri, string data, NetworkCredential auth = null, string contentType = null)
         {
             try
             {
@@ -47,7 +42,7 @@ namespace robokins.Utility
                     req.Credentials = auth;
 
                 req.Method = "POST";
-                req.ContentType = "application/x-www-form-urlencoded";
+                req.ContentType = contentType ?? "application/x-www-form-urlencoded";
                 req.ContentLength = buffer.Length;
 
                 Stream post = req.GetRequestStream();
