@@ -321,6 +321,7 @@ namespace robokins
 
                 case "urbandictionary":
                 case "urban":
+                case "ud":
                 case "ub":
                     if (command[2].Length == 0)
                     {
