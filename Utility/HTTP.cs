@@ -57,5 +57,20 @@ namespace robokins.Utility
                 return string.Empty;
             }
         }
+
+        public static string ShortUrl(string url)
+        {
+            const string service = "https://www.googleapis.com/urlshortener/v1/url";
+            var request = string.Concat("{\"longUrl\":\"", Uri.EscapeUriString(url), "\"}");
+
+            var result = DownloadPage(service, request, null, "application/json");
+
+            if (string.IsNullOrEmpty(result))
+                return url;
+
+            const string domain = "http://goo.gl/";
+            var id = Texts.StringBetween(result, domain, "\"");
+            return domain + id;
+        }
     }
 }
