@@ -37,7 +37,7 @@ namespace robokins.Utility
             return result;
         }
 
-        public static string StringBetween(string search, string start, string end, int offset)
+        public static string StringBetween(string search, string start, string end, int offset = 0)
         {
             int x = search.IndexOf(start, offset);
             if (x == -1)
