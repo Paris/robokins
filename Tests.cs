@@ -33,6 +33,10 @@ namespace robokins
             Console.WriteLine("MSDN: {0}", defs == null ? "null" : string.Join(" ", defs));
             Console.WriteLine();
 
+            def = UrbanDictionary.Search("windows");
+            Console.WriteLine("UrbanDictionary: {0}", def);
+            Console.WriteLine();
+
             def = "dllcall()";
             defs = Manual.Lookup(def);
             Console.WriteLine("Manual \"{0}\": {1}: {2}", def, defs[0], defs[1]);
