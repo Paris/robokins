@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace robokins.Utility
 {
@@ -11,6 +12,9 @@ namespace robokins.Utility
     {
         const string UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)";
         static Dictionary<string, string> urls;
+
+        public static string BitlyAuth { get; set; }
+        public static string BitlyKey { get; set; }
 
         static HTTP()
         {
@@ -95,7 +99,17 @@ namespace robokins.Utility
 
             #region bit.ly
 
-            // TODO: bit.ly shortening
+            if (string.IsNullOrEmpty(BitlyAuth) || string.IsNullOrEmpty(BitlyKey))
+                return url;
+
+            string bitly = string.Format("http://api.bitly.com/v3/shorten?login={0}&apiKey={1}&longUrl={2}&format=txt", BitlyAuth, BitlyKey, HttpUtility.UrlEncode(url));
+            string result = DownloadPage(bitly).Trim();
+
+            if (result.Length != 0 && result.StartsWith("http://"))
+            {
+                urls.Add(url, result);
+                return result;
+            }
 
             #endregion
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Security;
+using robokins.Utility;
 
 namespace robokins
 {
@@ -35,6 +36,13 @@ namespace robokins
             #endregion
 
             #region Others
+
+            const string bitlyauth = "bitlyauth", bitlykey = "bitlykey";
+
+            if (table.ContainsKey(bitlyauth))
+                HTTP.BitlyAuth = table[bitlyauth];
+            if (table.ContainsKey(bitlykey))
+                HTTP.BitlyKey = table[bitlykey];
 
             #endregion
 
