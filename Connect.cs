@@ -14,7 +14,7 @@ namespace robokins
             irc.ReceiveBufferSize = Client.BufferSize;
 
             client = new Client(irc.GetStream());
-            client.Pass(password);
+            client.Pass(Password);
             client.User(Environment.UserName, InitUsermode, RealName);
             client.Nick(Nick);
             client.Mode(Nick, Usermode);

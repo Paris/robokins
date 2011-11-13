@@ -10,17 +10,13 @@ namespace robokins
     {
         TcpClient irc;
         Client client;
-        SecureString password;
         public static readonly char[] boundary = new char[] { ' ' };
         int sent = 0;
         bool quit = false;
 
         TimeSpan start = Utility.Time.TimeSpanNow();
 
-        public SecureString Password
-        {
-            set { password = value; }
-        }
+        public SecureString Password { set; private get; }
 
         private Dictionary<string, string> Keys { get; set; }
     }
