@@ -26,9 +26,6 @@ namespace robokins
             Console.WriteLine("Google Search: {0}", defs == null ? "null" : string.Join(" ", defs));
             Console.WriteLine();
 
-            Console.WriteLine("Google Define: {0}", Google.Define("test") ?? "null");
-            Console.WriteLine();
-
             defs = MSDN.Search("createwindow");
             Console.WriteLine("MSDN: {0}", defs == null ? "null" : string.Join(" ", defs));
             Console.WriteLine();

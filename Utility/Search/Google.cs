@@ -18,23 +18,6 @@ namespace robokins.Utility.Search
             return FirstResult(HttpUtility.UrlEncode(query));
         }
 
-        public static string Define(string term)
-        {
-            string html = HTTP.DownloadPage("http://www.google.com/search?q=define%3A" + HttpUtility.UrlEncode(term));
-
-            const string bound = "<li>";
-            string result = Texts.StringBetween(html, bound, bound, 0);
-
-            if (string.IsNullOrEmpty(result))
-                return null;
-
-            int link = result.IndexOf(" ...<br>");
-            if (link > 0)
-                result = result.Substring(0, link);
-
-            return result.Length == 0 ? null : HttpUtility.HtmlDecode(result);
-        }
-
         static string[] FirstResult(string query)
         {
             string html = HTTP.DownloadPage(Site + query);

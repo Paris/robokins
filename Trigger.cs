@@ -216,6 +216,9 @@ namespace robokins
                 case "tell":
                 case "fmylife":
                 case "fml":
+                case "define":
+                case "def":
+                case "d":
                     response = "Sorry, this feature has been disabled.";
                     notify = true;
                     break;
@@ -240,25 +243,6 @@ namespace robokins
                 #endregion
 
                 #region Search
-
-                case "define":
-                case "def":
-                case "d":
-                    if (command[2].Length == 0)
-                    {
-                        response = "Please specify a search term.";
-                        notify = true;
-                        break;
-                    }
-                    def = Utility.Search.Google.Define(command[2]);
-                    if (string.IsNullOrEmpty(def))
-                    {
-                        response = "Could not find a definition for " + Utility.Font.Bold + command[2] + Utility.Font.Bold;
-                        notify = true;
-                    }
-                    else
-                        response = string.Format("{0}{1}{0}: {2}", new string[] { Utility.Font.Underlined, command[2], def });
-                    break;
 
                 case "google":
                 case "g":
