@@ -33,7 +33,7 @@ namespace robokins
 
             Tests(passwd);
 
-            var bot = new Bot() { Password = passwd };
+            var bot = new Bot(table) { Password = passwd };
             bot.Start();
         }
     }
