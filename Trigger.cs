@@ -134,7 +134,7 @@ namespace robokins
                     break;
 
                 case "help":
-                    response = "Hello, how can we help? If you have not already please read the tutorial at http://www.autohotkey.com/docs/Tutorial.htm";
+                    response = "Hello, how can we help? If you have not already please read the tutorial at " + HTTP.ShortUrl("http://www.autohotkey.com/docs/Tutorial.htm");
                     break;
 
                 case "about":
