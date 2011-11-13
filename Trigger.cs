@@ -124,7 +124,7 @@ namespace robokins
                 case "paste":
                 case "pb":
                 case "p":
-                    response = "Please use the official AutoHotkey pastebin at " + PasteURI + " to share code.";
+                    response = "Please use the official AutoHotkey pastebin at " + PasteURL + " to share code.";
                     break;
 
                 case "rules":

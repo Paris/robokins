@@ -31,6 +31,6 @@ namespace robokins
 
         const string PasteSync = "/home/titan/public_html/paste/sync";
         const int PasteFreq = 2500;
-        const string PasteURI = "http://paste.autohotkey.net/";
+        const string PasteURL = "http://p.ahk.me/";
     }
 }
