@@ -8,13 +8,16 @@ namespace robokins
     {
         public static void Main()
         {
-            #region Password
+            #region Keys
 
             const string conf = Bot.Username + ".conf";
+            var table = ConfRead(new StreamReader(conf));
+
+            #region Password
+
             if (!File.Exists(conf))
                 throw new FileNotFoundException("Configuration file not found.", conf);
 
-            var table = ConfRead(new StreamReader(conf));
             var passwd = new SecureString();
             const string key = "password";
 
@@ -28,6 +31,12 @@ namespace robokins
 
             if (passwd.Length == 0)
                 throw new ArgumentNullException("Password is blank.");
+
+            #endregion
+
+            #region Others
+
+            #endregion
 
             #endregion
 
