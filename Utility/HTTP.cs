@@ -1,13 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace robokins.Utility
 {
     class HTTP
     {
         const string UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)";
+        static Dictionary<string, string> urls;
+
+        static HTTP()
+        {
+            urls = new Dictionary<string, string>();
+            urls.Add("http://www.autohotkey.net/", "http://ahk.me/sqTsfk");
+            urls.Add("http://www.autohotkey.com/", "http://ahk.me/sDikbQ");
+            urls.Add("http://www.autohotkey.com/forum/", "http://ahk.me/rJiLHk");
+            urls.Add("http://www.autohotkey.com/docs/Tutorial.htm", "http://ahk.me/uKJ4oh");
+            urls.Add("http://github.com/polyethene/robokins", "http://ahk.me/s3K0Ze");
+        }
 
         public static string DownloadPage(string uri)
         {
@@ -60,17 +73,33 @@ namespace robokins.Utility
 
         public static string ShortUrl(string url)
         {
-            const string service = "https://www.googleapis.com/urlshortener/v1/url";
-            var request = string.Concat("{\"longUrl\":\"", Uri.EscapeUriString(url), "\"}");
+            if (urls.ContainsKey(url))
+                return urls[url];
 
-            var result = DownloadPage(service, request, null, "application/json");
+            #region ahk.me
 
-            if (string.IsNullOrEmpty(result))
-                return url;
+            Dictionary<string, string> ahkme = new Dictionary<string,string>(3);
+            ahkme.Add("c", @"^https?://(?:www\.)?autohotkey\.(?:net|com)/docs/commands/(\w+)\.htm$");
+            ahkme.Add("p", @"^https?://(?:(?:www\.)?autohotkey\.net/paste|paste\.autohotkey\.net)/(.*)$");
+            ahkme.Add("u", @"^https?://(?:www\.)?autohotkey\.(?:net|com)/(?:~|%7e)(.*)$");
 
-            const string domain = "http://goo.gl/";
-            var id = Texts.StringBetween(result, domain, "\"");
-            return domain + id;
+            foreach (string key in ahkme.Keys)
+            {
+                Regex r = new Regex(ahkme[key], RegexOptions.IgnoreCase);
+                Match m = r.Match(url);
+                if (m.Success)
+                    return string.Format("http://{0}.ahk.me/{1}", key, m.Groups[1]);
+            }
+
+            #endregion
+
+            #region bit.ly
+
+            // TODO: bit.ly shortening
+
+            #endregion
+
+            return url;
         }
     }
 }
