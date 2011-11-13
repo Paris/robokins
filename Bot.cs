@@ -12,11 +12,6 @@ namespace robokins
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { quit = true; });
         }
 
-        public Bot(Dictionary<string, string> keys) : base()
-        {
-            Keys = keys;
-        }
-
         [Conditional("DEBUG")]
         void Echo(string text)
         {

@@ -17,7 +17,5 @@ namespace robokins
         TimeSpan start = Utility.Time.TimeSpanNow();
 
         public SecureString Password { set; private get; }
-
-        private Dictionary<string, string> Keys { get; set; }
     }
 }
