@@ -270,7 +270,7 @@ namespace robokins
                         notify = true;
                         break;
                     }
-                    defs = Utility.Search.AutoHotkey.UserStats(command[2]);
+                    defs = Utility.Search.AutoHotkey.GetUserStats(command[2]);
                     if (defs == null)
                     {
                         response = "Could not find user " + Utility.Font.Bold + command[2] + Utility.Font.Bold;
