@@ -34,6 +34,10 @@ namespace robokins
             Console.WriteLine("UrbanDictionary: {0}", def);
             Console.WriteLine();
 
+            defs = AutoHotkey.GetUserStats("Chris");
+            Console.WriteLine("Chris: {0} {1} {2} {3}", defs);
+            Console.WriteLine();
+
             def = Links.Shorten("http://www.autohotkey.net/docs/commands/FormatTime.htm");
             Console.WriteLine("Short URL: {0}", def);
             Console.WriteLine();
