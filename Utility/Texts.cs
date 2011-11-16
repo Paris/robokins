@@ -7,8 +7,6 @@ namespace robokins.Utility
     {
         internal static Random Random = new Random();
 
-        public static readonly string[] YesResponses = new string[] { "Okay", "Sure thing", "Affirmative", "Roger that", "Yes", "Fine" };
-
         public static Regex StripTags = new Regex("<[^>]*?>");
         public static Regex ItemRSS = new Regex(@"<item>\s*<title>([^<]+)</title>\s*<link>([^<]+)</link>");
         public static Regex ItemDescrRSS = new Regex(@"<item>\s*<link>([^<]+)</link>\s*<title>([^<]+)</title>\s*<description>([^<]+)</description>");
