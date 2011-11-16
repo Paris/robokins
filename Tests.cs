@@ -38,7 +38,7 @@ namespace robokins
             Console.WriteLine("Chris: {0} {1} {2} {3}", defs);
             Console.WriteLine();
 
-            def = Links.Shorten("http://www.autohotkey.net/docs/commands/FormatTime.htm");
+            def = Links.Shorten("http://autohotkey.net/docs/commands/FormatTime.htm");
             Console.WriteLine("Short URL: {0}", def);
             Console.WriteLine();
 
