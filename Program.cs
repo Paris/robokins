@@ -40,9 +40,9 @@ namespace robokins
             const string bitlyauth = "bitlyauth", bitlykey = "bitlykey";
 
             if (table.ContainsKey(bitlyauth))
-                HTTP.BitlyAuth = table[bitlyauth];
+                Links.BitlyAuth = table[bitlyauth];
             if (table.ContainsKey(bitlykey))
-                HTTP.BitlyKey = table[bitlykey];
+                Links.BitlyKey = table[bitlykey];
 
             #endregion
 

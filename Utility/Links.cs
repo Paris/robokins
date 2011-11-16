@@ -1,0 +1,78 @@
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using System.Web;
+
+namespace robokins.Utility
+{
+    class Links
+    {
+        static Dictionary<string, string> shortened;
+
+        public static string BitlyAuth { get; set; }
+        public static string BitlyKey { get; set; }
+
+        static Links()
+        {
+            shortened = new Dictionary<string, string>();
+            shortened.Add("http://www.autohotkey.net/", "http://ahk.me/sqTsfk");
+            shortened.Add("http://www.autohotkey.com/", "http://ahk.me/sDikbQ");
+            shortened.Add("http://www.autohotkey.com/forum/", "http://ahk.me/rJiLHk");
+            shortened.Add("http://www.autohotkey.com/docs/Tutorial.htm", "http://ahk.me/uKJ4oh");
+            shortened.Add("http://github.com/polyethene/robokins", "http://git.io/robo");
+        }
+
+        public static string Shorten(string url)
+        {
+            if (shortened.ContainsKey(url))
+                return shortened[url];
+
+            string original = url;
+            url = ahkme(url);
+
+            if (!original.Equals(url))
+                shortened.Add(original, url);
+
+            return url;
+        }
+
+        public static string ahkme(string url)
+        {
+            if (string.IsNullOrEmpty(BitlyAuth) || string.IsNullOrEmpty(BitlyKey))
+            {
+                Dictionary<string, string> ahkme = new Dictionary<string, string>(5);
+                ahkme.Add("c", @"^https?://(?:www\.)?autohotkey\.(?:net|com)/docs/commands/(\w+)\.htm$");
+                ahkme.Add("l", @"^https?://(?:www\.)?autohotkey\.(?:net|com)/(?:~|%7e)Lexikos/AutoHotkey_L/(.*)$");
+                ahkme.Add("l", @"^https?://l\.autohotkey\.(?:net|com)/(.*)$");
+                ahkme.Add("p", @"^https?://(?:(?:www\.)?autohotkey\.net/paste|paste\.autohotkey\.net)/(.*)$");
+                ahkme.Add("u", @"^https?://(?:www\.)?autohotkey\.(?:net|com)/(?:~|%7e)(.*)$");
+
+                foreach (string key in ahkme.Keys)
+                {
+                    Regex r = new Regex(ahkme[key], RegexOptions.IgnoreCase);
+                    Match m = r.Match(url);
+                    if (m.Success)
+                        return string.Format("http://{0}.ahk.me/{1}", key, m.Groups[1]);
+                }
+            }
+
+            string bitly = string.Format("http://api.bitly.com/v3/shorten?login={0}&apiKey={1}&longUrl={2}&format=txt", BitlyAuth, BitlyKey, HttpUtility.UrlEncode(url));
+            string result = HTTP.DownloadPage(bitly).Trim();
+
+            return result.Length != 0 && result.StartsWith("http://") ? result : url;
+        }
+
+        public static string gitio(string url)
+        {
+            // TODO: use git.io API
+
+            return url;
+        }
+
+        public static string googl(string url)
+        {
+            // TODO: use goo.gl API
+
+            return url;
+        }
+    }
+}
