@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("robokins")]
 [assembly: AssemblyDescription("IRC bot for #ahk on freenode")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("polyethene <titan@autohotkey.net>")]
+[assembly: AssemblyCompany("polyethene <polyethene@autohotkey.net>")]
 [assembly: AssemblyProduct("http://github.com/polyethene/robokins")]
 [assembly: AssemblyCopyright("Copyright © 2010")]
 [assembly: AssemblyTrademark("")]
