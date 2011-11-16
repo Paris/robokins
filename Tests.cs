@@ -50,6 +50,10 @@ namespace robokins
             Console.WriteLine("Short URL: {0}", def);
             Console.WriteLine();
 
+            def = Links.Shorten("https://gist.github.com/187052");
+            Console.WriteLine("Short URL: {0}", def);
+            Console.WriteLine();
+
             def = Links.Shorten("http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=louth&sll=53.800651,-4.064941&sspn=33.219383,38.803711&ie=UTF8&hq=&hnear=Louth,+United+Kingdom&ll=53.370272,-0.004034&spn=0.064883,0.075788&z=14");
             Console.WriteLine("Short URL: {0}", def);
             Console.WriteLine();
