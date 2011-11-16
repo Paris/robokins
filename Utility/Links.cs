@@ -6,13 +6,14 @@ namespace robokins.Utility
 {
     class Links
     {
-        static Dictionary<string, string> shortened;
+        static Dictionary<string, string> shortened, expanded;
 
         public static string BitlyAuth { get; set; }
         public static string BitlyKey { get; set; }
 
         static Links()
         {
+            expanded = new Dictionary<string, string>();
             shortened = new Dictionary<string, string>();
             shortened.Add("http://www.autohotkey.net/", "http://ahk.me/sqTsfk");
             shortened.Add("http://www.autohotkey.com/", "http://ahk.me/sDikbQ");
@@ -31,6 +32,22 @@ namespace robokins.Utility
 
             if (!original.Equals(url))
                 shortened.Add(original, url);
+
+            return url;
+        }
+
+        public static string Expand(string url)
+        {
+            if (expanded.ContainsKey(url))
+                return expanded[url];
+
+            foreach (string key in shortened.Keys)
+            {
+                if (shortened[key].Equals(url))
+                    return key;
+            }
+
+            // TODO: use longurl.org API to expand URL
 
             return url;
         }
