@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("polyethene <polyethene@autohotkey.net>")]
 [assembly: AssemblyProduct("http://github.com/polyethene/robokins")]
-[assembly: AssemblyCopyright("Copyright © 2010")]
+[assembly: AssemblyCopyright("Copyright © 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
