@@ -1,20 +1,28 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Text;
 
 namespace robokins.Utility
 {
     class HTTP
     {
-        public const string UserAgent = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)";
+        public static string UserAgentReal;
+        public const string UserAgentFake = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)";
+
+        public HTTP()
+        {
+            Assembly self = Assembly.GetExecutingAssembly();
+            UserAgentReal = string.Concat(((AssemblyTitleAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyTitleAttribute))).Title, "/", self.GetName().Version.ToString());
+        }
 
         public static string DownloadPage(string uri)
         {
             try
             {
                 HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(uri);
-                req.UserAgent = UserAgent;
+                req.UserAgent = UserAgentFake;
 
                 HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
                 if (resp.StatusCode != HttpStatusCode.OK)
