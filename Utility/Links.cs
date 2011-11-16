@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -28,7 +29,14 @@ namespace robokins.Utility
                 return shortened[url];
 
             string original = url;
-            url = ahkme(url);
+            Uri uri = new Uri(url);
+
+            if (uri.Host.EndsWith("autohotkey.com") || uri.Host.EndsWith("autohotkey.net"))
+                url = ahkme(url);
+            else if (uri.Host.EndsWith("github.com"))
+                url = gitio(url);
+            else
+                url = googl(url);
 
             if (!original.Equals(url))
                 shortened.Add(original, url);
