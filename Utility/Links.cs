@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -31,12 +32,10 @@ namespace robokins.Utility
             string original = url;
             Uri uri = new Uri(url);
 
-            if (uri.Host.EndsWith("autohotkey.com") || uri.Host.EndsWith("autohotkey.net"))
-                url = ahkme(url);
-            else if (uri.Host.EndsWith("github.com"))
+            if (uri.Host.EndsWith("github.com"))
                 url = gitio(url);
             else
-                url = googl(url);
+                url = ahkme(url);
 
             if (!string.IsNullOrEmpty(url) && !original.Equals(url))
                 shortened.Add(original, url);
@@ -88,16 +87,13 @@ namespace robokins.Utility
 
         public static string gitio(string url)
         {
-            // TODO: use git.io API
+            const string service = "http://git.io/";
 
-            return url;
-        }
+            var parameters = new Dictionary<string, string>(1);
+            parameters.Add("url", url);
+            var req = HTTP.RequestPage(service, parameters, "POST");
 
-        public static string googl(string url)
-        {
-            // TODO: use goo.gl API
-
-            return url;
+            return req.StatusCode == HttpStatusCode.Created ? req.Headers[HttpResponseHeader.Location] : null;
         }
     }
 }
