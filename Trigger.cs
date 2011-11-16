@@ -148,7 +148,7 @@ namespace robokins
                     about.Append(" by ");
                     about.Append(((AssemblyCompanyAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyCompanyAttribute))).Company);
                     about.Append(". See ");
-                    about.Append(((AssemblyProductAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyProductAttribute))).Product);
+                    about.Append(Links.Shorten(((AssemblyProductAttribute)Attribute.GetCustomAttribute(self, typeof(AssemblyProductAttribute))).Product));
                     response = about.ToString();
                     break;
 
