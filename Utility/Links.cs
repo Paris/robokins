@@ -38,10 +38,10 @@ namespace robokins.Utility
             else
                 url = googl(url);
 
-            if (!original.Equals(url))
+            if (!string.IsNullOrEmpty(url) && !original.Equals(url))
                 shortened.Add(original, url);
 
-            return url;
+            return url ?? original;
         }
 
         public static string Expand(string url)
@@ -83,7 +83,7 @@ namespace robokins.Utility
             string bitly = string.Format("http://api.bitly.com/v3/shorten?login={0}&apiKey={1}&longUrl={2}&format=txt", BitlyAuth, BitlyKey, HttpUtility.UrlEncode(url));
             string result = HTTP.DownloadPage(bitly).Trim();
 
-            return result.Length != 0 && result.StartsWith("http://") ? result : url;
+            return result.Length != 0 && result.StartsWith("http://") ? result : null;
         }
 
         public static string gitio(string url)
