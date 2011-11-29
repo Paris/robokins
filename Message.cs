@@ -23,13 +23,14 @@ namespace robokins
 
         string Action(string msg)
         {
-            var buf = new StringBuilder(8 + msg.Length);
-            buf.Append('\x01');
-            buf.Append(Client.ACTION);
-            buf.Append(' ');
-            buf.Append(msg);
-            buf.Append('\x01');
-            return buf.ToString();
+            const char boundary = '\x01';
+            var buffer = new StringBuilder(2 + Client.ACTION.Length + msg.Length);
+            buffer.Append(boundary);
+            buffer.Append(Client.ACTION);
+            buffer.Append(' ');
+            buffer.Append(msg);
+            buffer.Append(boundary);
+            return buffer.ToString();
         }
     }
 }
