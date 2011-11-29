@@ -12,10 +12,10 @@ namespace robokins.IRC
 
         public void Ping(IEnumerable<string> server)
         {
-            send.Write(PING);
-            send.Write(' ');
-            send.WriteLine(Concat(server, " "));
-            send.Flush();
+            Send.Write(PING);
+            Send.Write(' ');
+            Send.WriteLine(Concat(server, " "));
+            Send.Flush();
         }
 
         public void Pong(params string[] server)
@@ -25,25 +25,25 @@ namespace robokins.IRC
 
         public void Pong(IEnumerable<string> server)
         {
-            send.Write(PONG);
-            send.Write(' ');
-            send.WriteLine(Concat(server, " "));
-            send.Flush();
+            Send.Write(PONG);
+            Send.Write(' ');
+            Send.WriteLine(Concat(server, " "));
+            Send.Flush();
         }
 
         public void Error(string message)
         {
-            send.Write(ERROR);
-            send.Write(' ');
-            send.WriteLine(message);
-            send.Flush();
+            Send.Write(ERROR);
+            Send.Write(' ');
+            Send.WriteLine(message);
+            Send.Flush();
         }
 
         [Conditional("DEBUG")]
         public void Raw(string message)
         {
-            send.WriteLine(message);
-            send.Flush();
+            Send.WriteLine(message);
+            Send.Flush();
         }
     }
 }

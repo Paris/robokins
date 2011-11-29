@@ -8,74 +8,74 @@ namespace robokins.IRC
     {
         public void Pass(SecureString password)
         {
-            send.Write(PASS);
-            send.Write(' ');
+            Send.Write(PASS);
+            Send.Write(' ');
             IntPtr bstr = Marshal.SecureStringToBSTR(password);
-            send.WriteLine(Marshal.PtrToStringUni(bstr));
+            Send.WriteLine(Marshal.PtrToStringUni(bstr));
             try { Marshal.ZeroFreeBSTR(bstr); }
             catch (MissingMethodException) { }
-            send.Flush();
+            Send.Flush();
         }
 
         public void Nick(string nickname)
         {
-            send.Write(NICK);
-            send.Write(' ');
-            send.WriteLine(nickname);
-            send.Flush();
+            Send.Write(NICK);
+            Send.Write(' ');
+            Send.WriteLine(nickname);
+            Send.Flush();
         }
 
         public void User(string user, string mode, string realname)
         {
-            send.Write(USER);
-            send.Write(' ');
-            send.Write(user);
-            send.Write(' ');
-            send.Write(mode);
-            send.Write(" * :");
-            send.WriteLine(realname);
-            send.Flush();
+            Send.Write(USER);
+            Send.Write(' ');
+            Send.Write(user);
+            Send.Write(' ');
+            Send.Write(mode);
+            Send.Write(" * :");
+            Send.WriteLine(realname);
+            Send.Flush();
         }
 
         public void Oper(string name, SecureString password)
         {
-            send.Write("OPER ");
-            send.Write(name);
-            send.Write(' ');
+            Send.Write("OPER ");
+            Send.Write(name);
+            Send.Write(' ');
             IntPtr bstr = Marshal.SecureStringToBSTR(password);
-            send.WriteLine(Marshal.PtrToStringUni(bstr));
+            Send.WriteLine(Marshal.PtrToStringUni(bstr));
             Marshal.ZeroFreeBSTR(bstr);
-            send.Flush();
+            Send.Flush();
         }
 
         public void Service(string nickname, string distribution, string info)
         {
-            send.Write(SERVICE);
-            send.Write(' ');
-            send.Write(nickname);
-            send.Write(" * ");
-            send.Write(distribution);
-            send.Write(" 0 0 :");
-            send.WriteLine(info);
-            send.Flush();
+            Send.Write(SERVICE);
+            Send.Write(' ');
+            Send.Write(nickname);
+            Send.Write(" * ");
+            Send.Write(distribution);
+            Send.Write(" 0 0 :");
+            Send.WriteLine(info);
+            Send.Flush();
         }
 
         public void Quit(string message)
         {
-            send.Write(QUIT);
-            send.Write(" :");
-            send.WriteLine(message);
-            send.Flush();
+            Send.Write(QUIT);
+            Send.Write(" :");
+            Send.WriteLine(message);
+            Send.Flush();
         }
 
         public void Squit(string server, string comment)
         {
-            send.Write(SQUIT);
-            send.Write(' ');
-            send.Write(server);
-            send.Write(" :");
-            send.WriteLine(comment);
-            send.Flush();
+            Send.Write(SQUIT);
+            Send.Write(' ');
+            Send.Write(server);
+            Send.Write(" :");
+            Send.WriteLine(comment);
+            Send.Flush();
         }
     }
 }

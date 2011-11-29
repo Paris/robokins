@@ -16,12 +16,12 @@ namespace robokins.IRC
 
         void Query(string type, string target, string text)
         {
-            send.Write(type);
-            send.Write(' ');
-            send.Write(target);
-            send.Write(" :");
-            send.WriteLine(text);
-            send.Flush();
+            Send.Write(type);
+            Send.Write(' ');
+            Send.Write(target);
+            Send.Write(" :");
+            Send.WriteLine(text);
+            Send.Flush();
         }
     }
 }

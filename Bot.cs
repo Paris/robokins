@@ -24,7 +24,7 @@ namespace robokins
             Connect();
             string line;
 
-            while ((line = client.receive.ReadLine()) != null)
+            while ((line = client.Receive.ReadLine()) != null)
             {
                 Echo(line);
                 string[] msg = line.Split(boundary, 3);

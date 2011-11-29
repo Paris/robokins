@@ -56,12 +56,12 @@ namespace robokins.IRC
 
         public void Invite(string nickname, string channel)
         {
-            send.Write(INVITE);
-            send.Write(' ');
-            send.Write(nickname);
-            send.Write(' ');
-            send.WriteLine(channel);
-            send.Flush();
+            Send.Write(INVITE);
+            Send.Write(' ');
+            Send.Write(nickname);
+            Send.Write(' ');
+            Send.WriteLine(channel);
+            Send.Flush();
         }
 
         public void Kick(IEnumerable<string> channel, IEnumerable<string> user, string comment)
@@ -71,27 +71,27 @@ namespace robokins.IRC
 
         public void Kick(string channel, string user, string comment)
         {
-            send.Write(KICK);
-            send.Write(' ');
-            send.Write(channel);
-            send.Write(' ');
-            send.Write(user);
-            send.Write(" :");
-            send.WriteLine(comment);
-            send.Flush();
+            Send.Write(KICK);
+            Send.Write(' ');
+            Send.Write(channel);
+            Send.Write(' ');
+            Send.Write(user);
+            Send.Write(" :");
+            Send.WriteLine(comment);
+            Send.Flush();
         }
 
 
         void RawMessage(string command, string channel, string text, bool delimit)
         {
-            send.Write(command);
-            send.Write(' ');
-            send.Write(channel);
-            send.Write(' ');
+            Send.Write(command);
+            Send.Write(' ');
+            Send.Write(channel);
+            Send.Write(' ');
             if (delimit)
-                send.Write(':');
-            send.WriteLine(text);
-            send.Flush();
+                Send.Write(':');
+            Send.WriteLine(text);
+            Send.Flush();
         }
     }
 }

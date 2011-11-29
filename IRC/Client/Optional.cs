@@ -6,48 +6,48 @@ namespace robokins.IRC
     {
         public void Away(string text)
         {
-            send.Write(AWAY);
-            send.Write(" :");
-            send.WriteLine(text);
-            send.Flush();
+            Send.Write(AWAY);
+            Send.Write(" :");
+            Send.WriteLine(text);
+            Send.Flush();
         }
 
         public void Rehash()
         {
-            send.WriteLine(REHASH);
-            send.Flush();
+            Send.WriteLine(REHASH);
+            Send.Flush();
         }
 
         public void Die()
         {
-            send.WriteLine(DIE);
-            send.Flush();
+            Send.WriteLine(DIE);
+            Send.Flush();
         }
 
         public void Restart()
         {
-            send.WriteLine(RESTART);
-            send.Flush();
+            Send.WriteLine(RESTART);
+            Send.Flush();
         }
 
         public void Summon(string user, string target, string channel)
         {
-            send.Write(SUMMON);
-            send.Write(' ');
-            send.Write(user);
-            send.Write(' ');
-            send.Write(target);
-            send.Write(' ');
-            send.WriteLine(channel);
-            send.Flush();
+            Send.Write(SUMMON);
+            Send.Write(' ');
+            Send.Write(user);
+            Send.Write(' ');
+            Send.Write(target);
+            Send.Write(' ');
+            Send.WriteLine(channel);
+            Send.Flush();
         }
 
         public void Users(string target)
         {
-            send.Write(USERS);
-            send.Write(' ');
-            send.WriteLine(target);
-            send.Flush();
+            Send.Write(USERS);
+            Send.Write(' ');
+            Send.WriteLine(target);
+            Send.Flush();
         }
 
         public void Wallops(string text)
@@ -57,10 +57,10 @@ namespace robokins.IRC
 
         public void Operwall(string text)
         {
-            send.Write(WALLOPS);
-            send.Write(" :");
-            send.WriteLine(text);
-            send.Flush();
+            Send.Write(WALLOPS);
+            Send.Write(" :");
+            Send.WriteLine(text);
+            Send.Flush();
         }
 
         public void Userhost(params string[] nickname)
@@ -70,10 +70,10 @@ namespace robokins.IRC
 
         public void Userhost(IEnumerable<string> nickname)
         {
-            send.Write(USERHOST);
-            send.Write(' ');
-            Concat(nickname, " ", send);
-            send.Flush();
+            Send.Write(USERHOST);
+            Send.Write(' ');
+            Concat(nickname, " ", Send);
+            Send.Flush();
         }
 
         public void Ison(params string[] nickname)
@@ -83,10 +83,10 @@ namespace robokins.IRC
 
         public void Ison(IEnumerable<string> nickname)
         {
-            send.Write(ISON);
-            send.Write(' ');
-            Concat(nickname, " ", send);
-            send.Flush();
+            Send.Write(ISON);
+            Send.Write(' ');
+            Concat(nickname, " ", Send);
+            Send.Flush();
         }
     }
 }

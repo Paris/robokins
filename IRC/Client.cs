@@ -4,14 +4,14 @@ namespace robokins.IRC
 {
     partial class Client
     {
-        public StreamWriter send;
-        public StreamReader receive;
+        public StreamWriter Send { get; protected set; }
+        public StreamReader Receive { get; protected set; }
 
         public Client(Stream Client)
         {
-            send = new StreamWriter(Client);
-            send.NewLine = Linefeed;
-            receive = new StreamReader(Client);
+            Send = new StreamWriter(Client);
+            Send.NewLine = Linefeed;
+            Receive = new StreamReader(Client);
         }
     }
 }

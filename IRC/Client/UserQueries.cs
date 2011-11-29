@@ -6,45 +6,45 @@ namespace robokins.IRC
     {
         public void Who(string mask, bool op)
         {
-            send.Write(WHO);
-            send.Write(' ');
-            send.Write(mask);
-            send.WriteLine(op ? " o" : string.Empty);
-            send.Flush();
+            Send.Write(WHO);
+            Send.Write(' ');
+            Send.Write(mask);
+            Send.WriteLine(op ? " o" : string.Empty);
+            Send.Flush();
         }
 
         public void Whois(string target, string mask)
         {
-            send.Write(WHOIS);
-            send.Write(' ');
-            send.Write(target);
-            send.Write(' ');
-            send.WriteLine(mask);
-            send.Flush();
+            Send.Write(WHOIS);
+            Send.Write(' ');
+            Send.Write(target);
+            Send.Write(' ');
+            Send.WriteLine(mask);
+            Send.Flush();
         }
 
         public void Whowas(IEnumerable<string> nickname, string count, string target)
         {
-            send.Write(WHOWAS);
-            send.Write(' ');
-            Concat(nickname, ",", send);
-            send.Write(' ');
-            send.Write(count);
-            send.Write(' ');
-            send.WriteLine(target);
-            send.Flush();
+            Send.Write(WHOWAS);
+            Send.Write(' ');
+            Concat(nickname, ",", Send);
+            Send.Write(' ');
+            Send.Write(count);
+            Send.Write(' ');
+            Send.WriteLine(target);
+            Send.Flush();
         }
 
         public void Whowas(string nickname, string count, string target)
         {
-            send.Write(WHOWAS);
-            send.Write(' ');
-            send.Write(nickname);
-            send.Write(' ');
-            send.Write(count);
-            send.Write(' ');
-            send.WriteLine(target);
-            send.Flush();
+            Send.Write(WHOWAS);
+            Send.Write(' ');
+            Send.Write(nickname);
+            Send.Write(' ');
+            Send.Write(count);
+            Send.Write(' ');
+            Send.WriteLine(target);
+            Send.Flush();
         }
     }
 }
