@@ -5,11 +5,6 @@ namespace robokins.IRC
 {
     class ReceivedMessage
     {
-        bool notice;
-        User user;
-        string target;
-        string text;
-
         public ReceivedMessage(string query)
         {
             if (query.Length > Client.BufferSize || query.Length < (":x!y " + Client.NOTICE + " z :").Length || query[0] != ':')
@@ -23,65 +18,51 @@ namespace robokins.IRC
             z = query.IndexOf(':', 1);
             if (z == -1)
                 throw new ArgumentOutOfRangeException();
-            text = z + 1 >= query.Length ? string.Empty : query.Substring(z + 1);
+            Text = z + 1 >= query.Length ? string.Empty : query.Substring(z + 1);
 
             string[] values = query.Substring(1, z - 2).Split(Bot.boundary);
 
             if (values.Length != 3)
                 throw new ArgumentOutOfRangeException();
 
-            user = new User(values[0]);
+            User = new User(values[0]);
 
             switch (values[1].ToUpperInvariant())
             {
                 case Client.PRIVMSG:
-                    notice = false;
+                    Notice = false;
                     break;
                 case Client.NOTICE:
-                    notice = true;
+                    Notice = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            target = values[2];
+            Target = values[2];
         }
 
-        public bool Notice
-        {
-            get { return notice; }
-        }
+        public bool Notice { get; protected set; }
 
-        public User User
-        {
-            get { return user; }
-        }
+        public User User { get; protected set; }
 
-        public string Target
-        {
-            get { return target; }
-            set { target = value; }
-        }
+        public string Target { get; set; }
 
-        public string Text
-        {
-            get { return text; }
-            set { text = value; }
-        }
+        public string Text { get; set; }
 
         public override string ToString()
         {
             var buf = new StringBuilder(Client.BufferSize);
             char bound = Bot.boundary[0];
             buf.Append(':');
-            buf.Append(user.ToString());
+            buf.Append(User.ToString());
             buf.Append(bound);
-            buf.Append(notice ? Client.NOTICE : Client.PRIVMSG);
+            buf.Append(Notice ? Client.NOTICE : Client.PRIVMSG);
             buf.Append(bound);
-            buf.Append(target);
+            buf.Append(Target);
             buf.Append(bound);
             buf.Append(':');
-            buf.Append(text);
+            buf.Append(Text);
             if (buf.Length > Client.BufferSize)
                 throw new ArgumentOutOfRangeException();
             return buf.ToString();
