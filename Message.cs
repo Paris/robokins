@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
+using robokins.IRC;
 
 namespace robokins
 {
@@ -29,7 +30,8 @@ namespace robokins
         {
             var buf = new StringBuilder(8 + msg.Length);
             buf.Append('\x01');
-            buf.Append("ACTION ");
+            buf.Append(Client.ACTION);
+            buf.Append(' ');
             buf.Append(msg);
             buf.Append('\x01');
             return buf.ToString();

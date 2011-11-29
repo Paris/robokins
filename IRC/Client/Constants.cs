@@ -51,6 +51,7 @@ namespace robokins.IRC
         public const string WHOWAS = "WHOWAS";
         public const string PRIVMSG = "PRIVMSG";
         public const string NOTICE = "NOTICE";
+        public const string ACTION = "ACTION";
 
         public const string ChanServ = "ChanServ";
         public const string NickServ = "NickServ";
