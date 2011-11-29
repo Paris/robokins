@@ -7,12 +7,7 @@ namespace robokins
 {
     partial class Bot
     {
-        void Message(string target, string text)
-        {
-            Message(target, text, false);
-        }
-
-        void Message(string target, string text, bool notice)
+        void Message(string target, string text, bool notice = false)
         {
             int since = Environment.TickCount - sent;
             if (since < SendDelay && since > 0)
