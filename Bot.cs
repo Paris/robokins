@@ -29,9 +29,9 @@ namespace robokins
                 Echo(line);
                 string[] msg = line.Split(boundary, 3);
 
-                if (msg[0] == "PING")
+                if (msg[0] == Client.PING)
                     client.Pong(msg[1]);
-                else if (msg[1] == "PRIVMSG")
+                else if (msg[1] == Client.PRIVMSG)
                 {
                     ReceivedMessage message;
                     try { message = new ReceivedMessage(line); }

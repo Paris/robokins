@@ -8,7 +8,8 @@ namespace robokins.IRC
     {
         public void Pass(SecureString password)
         {
-            send.Write("PASS ");
+            send.Write(PASS);
+            send.Write(' ');
             IntPtr bstr = Marshal.SecureStringToBSTR(password);
             send.WriteLine(Marshal.PtrToStringUni(bstr));
             try { Marshal.ZeroFreeBSTR(bstr); }
@@ -18,14 +19,16 @@ namespace robokins.IRC
 
         public void Nick(string nickname)
         {
-            send.Write("NICK ");
+            send.Write(NICK);
+            send.Write(' ');
             send.WriteLine(nickname);
             send.Flush();
         }
 
         public void User(string user, string mode, string realname)
         {
-            send.Write("USER ");
+            send.Write(USER);
+            send.Write(' ');
             send.Write(user);
             send.Write(' ');
             send.Write(mode);
@@ -47,7 +50,8 @@ namespace robokins.IRC
 
         public void Service(string nickname, string distribution, string info)
         {
-            send.Write("SERVICE ");
+            send.Write(SERVICE);
+            send.Write(' ');
             send.Write(nickname);
             send.Write(" * ");
             send.Write(distribution);
@@ -58,14 +62,16 @@ namespace robokins.IRC
 
         public void Quit(string message)
         {
-            send.Write("QUIT :");
+            send.Write(QUIT);
+            send.Write(" :");
             send.WriteLine(message);
             send.Flush();
         }
 
         public void Squit(string server, string comment)
         {
-            send.Write("SQUIT ");
+            send.Write(SQUIT);
+            send.Write(' ');
             send.Write(server);
             send.Write(" :");
             send.WriteLine(comment);

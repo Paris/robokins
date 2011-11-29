@@ -10,12 +10,9 @@ namespace robokins.IRC
         string target;
         string text;
 
-        const string privmsgTxt = "PRIVMSG";
-        const string noticeTxt = "NOTICE";
-
         public ReceivedMessage(string query)
         {
-            if (query.Length > Client.BufferSize || query.Length < (":x!y " + noticeTxt + " z :").Length || query[0] != ':')
+            if (query.Length > Client.BufferSize || query.Length < (":x!y " + Client.NOTICE + " z :").Length || query[0] != ':')
                 throw new ArgumentOutOfRangeException();
 
             int z;
@@ -37,10 +34,10 @@ namespace robokins.IRC
 
             switch (values[1].ToUpperInvariant())
             {
-                case privmsgTxt:
+                case Client.PRIVMSG:
                     notice = false;
                     break;
-                case noticeTxt:
+                case Client.NOTICE:
                     notice = true;
                     break;
                 default:
@@ -79,7 +76,7 @@ namespace robokins.IRC
             buf.Append(':');
             buf.Append(user.ToString());
             buf.Append(bound);
-            buf.Append(notice ? noticeTxt : privmsgTxt);
+            buf.Append(notice ? Client.NOTICE : Client.PRIVMSG);
             buf.Append(bound);
             buf.Append(target);
             buf.Append(bound);

@@ -5,12 +5,12 @@ namespace robokins.IRC
     {
         public void Private(string target, string text)
         {
-            Query("PRIVMSG", target, text);
+            Query(PRIVMSG, target, text);
         }
 
         public void Notice(string target, string text)
         {
-            Query("NOTICE", target, text);
+            Query(NOTICE, target, text);
         }
 
 

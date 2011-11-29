@@ -5,7 +5,8 @@ namespace robokins.IRC
     {
         public void Servlist(string mask, string type)
         {
-            send.Write("SERVLIST ");
+            send.Write(SERVLIST);
+            send.Write(' ');
             send.Write(mask);
             send.Write(' ');
             send.WriteLine(type);
@@ -14,7 +15,8 @@ namespace robokins.IRC
 
         public void Squery(string service, string text)
         {
-            send.Write("SQUERY ");
+            send.Write(SQUERY);
+            send.Write(' ');
             send.Write(service);
             send.Write(" :");
             send.WriteLine(text);

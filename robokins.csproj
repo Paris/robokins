@@ -77,6 +77,7 @@
     <Compile Include="IRC\Client\ServiceQueries.cs" />
     <Compile Include="IRC\Client\UserQueries.cs" />
     <Compile Include="IRC\Client\ServerQueries.cs" />
+    <Compile Include="IRC\Helper.cs" />
     <Compile Include="IRC\ReceivedMessage.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Config.cs" />
