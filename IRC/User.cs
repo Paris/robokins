@@ -25,19 +25,19 @@ namespace robokins.IRC
 
         public override string ToString()
         {
-            var buf = new StringBuilder(Nick.Length + Ident.Length + Host.Length + 2);
+            var buffer = new StringBuilder(Nick.Length + Ident.Length + Host.Length + 2);
             if (Nick.Length != 0)
             {
-                buf.Append(Nick);
-                buf.Append('!');
+                buffer.Append(Nick);
+                buffer.Append('!');
             }
             if (Ident.Length != 0)
             {
-                buf.Append(Ident);
-                buf.Append('@');
+                buffer.Append(Ident);
+                buffer.Append('@');
             }
-            buf.Append(Host);
-            return buf.ToString();
+            buffer.Append(Host);
+            return buffer.ToString();
         }
     }
 }
