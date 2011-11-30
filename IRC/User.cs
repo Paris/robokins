@@ -4,52 +4,39 @@ namespace robokins.IRC
 {
     class User
     {
-        string nick;
-        string ident;
-        string host;
-
         public User(string alias)
         {
             int x = alias.IndexOf('!');
-            nick = x == -1 ? string.Empty : alias.Substring(0, x);
+            Nick = x == -1 ? string.Empty : alias.Substring(0, x);
 
             x++;
             int y = alias.IndexOf('@', x);
-            ident = y == -1 ? string.Empty : alias.Substring(x, y - x);
+            Ident = y == -1 ? string.Empty : alias.Substring(x, y - x);
 
             y++;
-            host = alias.Substring(y);
+            Host = alias.Substring(y);
         }
 
-        public string Nick
-        {
-            get { return nick; }
-        }
+        public string Nick { get; protected set; }
 
-        public string Ident
-        {
-            get { return ident; }
-        }
+        public string Ident { get; protected set; }
 
-        public string Host
-        {
-            get { return host; }
-        }
+        public string Host { get; protected set; }
 
         public override string ToString()
         {
-            var buf = new StringBuilder(Nick.Length + ident.Length + host.Length + 2);
+            var buf = new StringBuilder(Nick.Length + Ident.Length + Host.Length + 2);
             if (Nick.Length != 0)
             {
                 buf.Append(Nick);
                 buf.Append('!');
             }
-            if (ident.Length != 0)
+            if (Ident.Length != 0)
             {
-                buf.Append(ident);
+                buf.Append(Ident);
                 buf.Append('@');
             }
-            buf.Append(host);
+            buf.Append(Host);
             return buf.ToString();
         }
     }
