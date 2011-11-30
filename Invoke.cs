@@ -5,7 +5,7 @@ namespace robokins
 {
     partial class Bot
     {
-        bool Invoke(ReceivedMessage message)
+        bool Invoke(Message message)
         {
             message.Text = message.Text.Trim();
 

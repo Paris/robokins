@@ -8,7 +8,7 @@ namespace robokins
 {
     partial class Bot
     {
-        bool Trigger(ReceivedMessage message)
+        bool Trigger(Message message)
         {
             #region Variables
 

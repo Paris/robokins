@@ -33,8 +33,8 @@ namespace robokins
                     client.Pong(msg[1]);
                 else if (msg[1] == Client.PRIVMSG)
                 {
-                    ReceivedMessage message;
-                    try { message = new ReceivedMessage(line); }
+                    Message message;
+                    try { message = new Message(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
                     Trigger(message);

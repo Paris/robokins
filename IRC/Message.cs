@@ -3,9 +3,9 @@ using System.Text;
 
 namespace robokins.IRC
 {
-    class ReceivedMessage
+    class Message
     {
-        public ReceivedMessage(string query)
+        public Message(string query)
         {
             if (query.Length > Client.BufferSize || query.Length < (":x!y " + Client.NOTICE + " z :").Length || query[0] != ':')
                 throw new ArgumentOutOfRangeException();
