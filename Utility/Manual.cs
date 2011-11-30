@@ -5,14 +5,13 @@ using robokins.Properties;
 
 namespace robokins.Utility
 {
-    class Manual
+    static class Manual
     {
-        static Dictionary<string, string[]> index = null;
+        static Dictionary<string, string[]> index;
 
         public static string[] Lookup(string item)
         {
-            CheckIndex();
-            string key = item = NormaliseKey(item);
+            var key = NormaliseKey(item);
             return index.ContainsKey(key) ? index[key] : null;
         }
 
@@ -25,11 +24,8 @@ namespace robokins.Utility
             return key;
         }
 
-        static void CheckIndex()
+        static Manual()
         {
-            if (index != null)
-                return;
-
             index = new Dictionary<string, string[]>();
 
             var reader = new StringReader((string)Resources.Manual);
