@@ -58,6 +58,11 @@ namespace robokins
             Console.WriteLine("Short URL: {0}", def);
             Console.WriteLine();
 
+            var pastes = Bot.pasteFetch(1);
+            foreach (var item in pastes.Keys)
+                Console.WriteLine("Paste: {0} by {1}{2}", item, pastes[item][0], string.IsNullOrEmpty(pastes[item][1]) ? string.Empty : " - " + pastes[item][1]);
+            Console.WriteLine();
+
             def = "dllcall()";
             defs = Manual.Lookup(def);
             Console.WriteLine("Manual \"{0}\": {1}: {2}", def, defs[0], defs[1]);
