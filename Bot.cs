@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security;
 using robokins.IRC;
 
 namespace robokins
 {
     partial class Bot
     {
+        public SecureString Password { set; private get; }
+
         protected bool Quit { get; set; }
 
         public event EventHandler Quitting;
