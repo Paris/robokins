@@ -11,8 +11,6 @@ namespace robokins
         public static readonly char[] boundary = new char[] { ' ' };
         bool quit = false;
 
-        TimeSpan start = Utility.Time.TimeSpanNow();
-
         public SecureString Password { set; private get; }
     }
 }

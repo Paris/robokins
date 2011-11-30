@@ -106,14 +106,6 @@ namespace robokins
 
                 #region Messages
 
-                case "status":
-                case "stats":
-                case "stat":
-                case "s":
-                    response = string.Format("Uptime: " + Utility.Font.Bold + "{0}" + Utility.Font.Bold, 
-                        Utility.Time.ToDays(Math.Abs(Utility.Time.TimeSpanNow().Subtract(start).TotalSeconds)));
-                    break;
-
                 case "hello":
                 case "who":
                 case "hey":
@@ -221,6 +213,10 @@ namespace robokins
                 case "define":
                 case "def":
                 case "d":
+                case "status":
+                case "stats":
+                case "stat":
+                case "s":
                     response = "Sorry, this feature has been disabled.";
                     notify = true;
                     break;
