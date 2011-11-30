@@ -11,6 +11,8 @@ namespace robokins.Utility
         public static Regex ItemRSS = new Regex(@"<item>\s*<title>([^<]+)</title>\s*<link>([^<]+)</link>");
         public static Regex ItemDescrRSS = new Regex(@"<item>\s*<link>([^<]+)</link>\s*<title>([^<]+)</title>\s*<description>([^<]+)</description>");
 
+        static readonly char[] boundary = new[] { ' ' };
+
         /// <summary>
         /// Splits command into an array as { first word, second word, everything after first word }.
         /// </summary>
@@ -20,14 +22,14 @@ namespace robokins.Utility
         {
             string[] result = new string[] { string.Empty, string.Empty, string.Empty };
 
-            string[] parts = Text.Trim().Split(Bot.boundary, 2);
+            string[] parts = Text.Trim().Split(boundary, 2);
             if (parts.Length > 0)
             {
                 result[0] = parts[0];
                 if (parts.Length > 1)
                 {
                     result[2] = parts[1];
-                    int z = result[2].IndexOfAny(Bot.boundary);
+                    int z = result[2].IndexOfAny(boundary);
                     result[1] = z == -1 ? result[2] : result[2].Substring(0, z);
                 }
             }
