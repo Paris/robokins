@@ -25,7 +25,7 @@ namespace robokins
             Connect();
             string line;
 
-            MessageEvent += new EventHandler<MessageEventArgs>(Trigger);
+            MessageReceived += new EventHandler<MessageReceivedArgs>(Trigger);
 
             Quitting += new EventHandler(delegate(object sender, EventArgs e)
             {
@@ -49,7 +49,7 @@ namespace robokins
                     try { message = new Message(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
-                    MessageEvent(this, new MessageEventArgs(client, message));
+                    MessageReceived(this, new MessageReceivedArgs(client, message));
 
                     if (quit)
                     {

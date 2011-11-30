@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Text;
 using robokins.IRC;
 
 namespace robokins
 {
     partial class Bot
     {
-        public event EventHandler<MessageEventArgs> MessageEvent;
+        public event EventHandler<MessageReceivedArgs> MessageReceived;
 
-        public class MessageEventArgs : EventArgs
+        public class MessageReceivedArgs : EventArgs
         {
-            public MessageEventArgs(Client client, Message message)
+            public MessageReceivedArgs(Client client, Message message)
             {
                 Client = client;
                 Message = message;
