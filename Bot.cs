@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using robokins.IRC;
 
@@ -7,6 +6,8 @@ namespace robokins
 {
     partial class Bot
     {
+        public event EventHandler Quitting;
+
         public Bot()
         {
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { quit = true; });
@@ -26,6 +27,15 @@ namespace robokins
 
             MessageEvent += new EventHandler<MessageEventArgs>(Trigger);
 
+            Quitting += new EventHandler(delegate(object sender, EventArgs e)
+            {
+                if (irc.Connected)
+                {
+                    client.Quit("Got to go, bye!");
+                    irc.Client.Close(SendDelay);
+                }
+            });
+
             while ((line = client.Receive.ReadLine()) != null)
             {
                 Echo(line);
@@ -43,17 +53,7 @@ namespace robokins
 
                     if (quit)
                     {
-                        if (paste != null && paste.Enabled)
-                            paste.Stop();
-
-                        if (bots != null && bots.Enabled)
-                            bots.Stop();
-
-                        if (irc.Connected)
-                        {
-                            client.Quit("Got to go, bye!");
-                            irc.Client.Close(SendDelay);
-                        }
+                        Quitting(this, new EventArgs());
                         break;
                     }
                 }

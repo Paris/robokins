@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Timers;
@@ -8,16 +9,15 @@ namespace robokins
 {
     partial class Bot
     {
-        Timer paste = null;
         List<string> pasteIds;
 
         [Conditional("PASTE")]
         void PasteSetup()
         {
             pasteIds = new List<string>();
-            paste = new Timer(PasteFreq);
+            var timer = new Timer(PasteFreq);
             var local = Directory.Exists(PasteSync);
-            paste.Elapsed += local ? new ElapsedEventHandler(pasteDirectoryCheck) : new ElapsedEventHandler(pasteFeedCheck);
+            timer.Elapsed += local ? new ElapsedEventHandler(pasteDirectoryCheck) : new ElapsedEventHandler(pasteFeedCheck);
 
             if (!local)
             {
@@ -25,7 +25,13 @@ namespace robokins
                     pasteIds.Add(item);
             }
 
-            paste.Start();
+            Quitting += new System.EventHandler(delegate(object sender, EventArgs e)
+            {
+                if (timer.Enabled)
+                    timer.Stop();
+            });
+
+            timer.Start();
         }
 
         void pasteDirectoryCheck(object sender, ElapsedEventArgs e)

@@ -6,18 +6,23 @@ namespace robokins
 {
     partial class Bot
     {
-        Timer bots = null;
-
         [Conditional("FUNBOTS")]
         void FunBotsSetup()
         {
-            var random = new Random();
-            bots = new Timer(60 * 60 * 1000 / 2);
-            bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
+            var timer = new Timer(60 * 60 * 1000 / 2);
+
+            timer.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
                 Message(client, "lolikins", "!stuff");
             });
-            bots.Start();
+
+            Quitting += new EventHandler(delegate(object sender, EventArgs e)
+            {
+                if (timer.Enabled)
+                    timer.Stop();
+            });
+
+            timer.Start();
         }
     }
 }
