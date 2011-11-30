@@ -24,6 +24,8 @@ namespace robokins
             Connect();
             string line;
 
+            MessageEvent += new EventHandler<MessageEventArgs>(Trigger);
+
             while ((line = client.Receive.ReadLine()) != null)
             {
                 Echo(line);
@@ -37,7 +39,7 @@ namespace robokins
                     try { message = new Message(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
-                    Trigger(message);
+                    MessageEvent(this, new MessageEventArgs(client, message));
 
                     if (quit)
                     {
