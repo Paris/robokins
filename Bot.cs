@@ -6,11 +6,13 @@ namespace robokins
 {
     partial class Bot
     {
+        protected bool Quit { get; set; }
+
         public event EventHandler Quitting;
 
         public Bot()
         {
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { quit = true; });
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { Quit = true; });
         }
 
         [Conditional("DEBUG")]
@@ -51,7 +53,7 @@ namespace robokins
 
                     MessageReceived(this, new MessageReceivedArgs(Client, message));
 
-                    if (quit)
+                    if (Quit)
                     {
                         Quitting(this, new EventArgs());
                         break;

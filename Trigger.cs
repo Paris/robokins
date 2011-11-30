@@ -36,7 +36,7 @@ namespace robokins
                 case "quit":
                 case "die":
                     if (auth)
-                        quit = true;
+                        Quit = true;
                     else
                     {
                         response = "You do not have the authority to make me quit.";

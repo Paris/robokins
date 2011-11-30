@@ -8,8 +8,6 @@ namespace robokins
 {
     partial class Bot
     {
-        bool quit = false;
-
         public SecureString Password { set; private get; }
     }
 }
