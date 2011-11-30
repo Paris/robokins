@@ -29,7 +29,7 @@ namespace robokins
                         nick = nick.Substring(0, z);
                     }
 
-                    Message(Channel, string.Format("{0} pasted {1}{2}{3}", new string[] { nick, PasteURL, id, info }));
+                    Message(client, Channel, string.Format("{0} pasted {1}{2}{3}", new string[] { nick, PasteURL, id, info }));
                     file.Delete();
                 }
             });

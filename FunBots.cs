@@ -15,7 +15,7 @@ namespace robokins
             bots = new Timer(60 * 60 * 1000 / 2);
             bots.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
-                Message("lolikins", "!stuff");
+                Message(client, "lolikins", "!stuff");
             });
             bots.Start();
         }

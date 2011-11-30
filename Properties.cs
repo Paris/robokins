@@ -11,7 +11,6 @@ namespace robokins
         TcpClient irc;
         Client client;
         public static readonly char[] boundary = new char[] { ' ' };
-        int sent = 0;
         bool quit = false;
 
         TimeSpan start = Utility.Time.TimeSpanNow();

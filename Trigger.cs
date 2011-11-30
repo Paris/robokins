@@ -55,7 +55,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            Message("ChanServ", "QUIET " + Channel + " " + command[1]);
+                            Message(e.Client, "ChanServ", "QUIET " + Channel + " " + command[1]);
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            Message("ChanServ", "UNQUIET " + Channel + " " + command[1]);
+                            Message(e.Client, "ChanServ", "UNQUIET " + Channel + " " + command[1]);
                     }
                     else
                     {
@@ -413,7 +413,7 @@ namespace robokins
                 response = Action(response);
 
             if (response.Length != 0)
-                Message(message.Target, response, notify);
+                Message(e.Client, message.Target, response, notify);
 
             #endregion
         }
