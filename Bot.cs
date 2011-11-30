@@ -39,7 +39,7 @@ namespace robokins
             while ((line = Client.Receive.ReadLine()) != null)
             {
                 Echo(line);
-                string[] msg = line.Split(boundary, 3);
+                string[] msg = line.Split(new[] { ' ' }, 3);
 
                 if (msg[0] == Client.PING)
                     Client.Pong(msg[1]);

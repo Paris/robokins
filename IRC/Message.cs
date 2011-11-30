@@ -53,14 +53,13 @@ namespace robokins.IRC
         public override string ToString()
         {
             var buf = new StringBuilder(Client.BufferSize);
-            char bound = Bot.boundary[0];
             buf.Append(':');
             buf.Append(User.ToString());
-            buf.Append(bound);
+            buf.Append(' ');
             buf.Append(Notice ? Client.NOTICE : Client.PRIVMSG);
-            buf.Append(bound);
+            buf.Append(' ');
             buf.Append(Target);
-            buf.Append(bound);
+            buf.Append(' ');
             buf.Append(':');
             buf.Append(Text);
             if (buf.Length > Client.BufferSize)

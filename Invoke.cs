@@ -14,7 +14,7 @@ namespace robokins
 
             bool query = message.Target[0] != '#';
             char first = message.Text[0];
-            string word = message.Text.Split(Bot.boundary, 2, StringSplitOptions.RemoveEmptyEntries)[0].ToLowerInvariant();
+            string word = message.Text.Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries)[0].ToLowerInvariant();
             string nickLow = Nick.ToLowerInvariant();
 
             if (first == '!' || first == '@')
