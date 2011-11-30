@@ -5,8 +5,8 @@ namespace robokins.Utility
 {
     class Time
     {
-        static readonly string[] Locations = new string[] { "UK", "Europe", "US Central", "US Eastern", "Brazil", "Japan", "Australia" };
-        static readonly int[] LocationOffsets = new int[] { 0, 1, -6, -5, -3, 9, 10 };
+        static readonly string[] Locations = new[] { "UK", "Europe", "US Central", "US Eastern", "Brazil", "Japan", "Australia" };
+        static readonly int[] LocationOffsets = new[] { 0, 1, -6, -5, -3, 9, 10 };
 
         public static string WorldTime()
         {
