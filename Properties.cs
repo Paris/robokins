@@ -8,8 +8,6 @@ namespace robokins
 {
     partial class Bot
     {
-        TcpClient irc;
-        Client client;
         public static readonly char[] boundary = new char[] { ' ' };
         bool quit = false;
 

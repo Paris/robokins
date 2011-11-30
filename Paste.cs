@@ -105,7 +105,7 @@ namespace robokins
         {
             if (!string.IsNullOrEmpty(info))
                 info = " - " + info;
-            Message(client, Channel, string.Format("{0} pasted {1}{2}", new string[] { nick, id, info }));
+            Message(Client, Channel, string.Format("{0} pasted {1}{2}", new string[] { nick, id, info }));
         }
     }
 }

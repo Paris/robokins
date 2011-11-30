@@ -7,11 +7,11 @@ namespace robokins.IRC
         public StreamWriter Send { get; protected set; }
         public StreamReader Receive { get; protected set; }
 
-        public Client(Stream Client)
+        public Client(Stream client)
         {
-            Send = new StreamWriter(Client);
+            Send = new StreamWriter(client);
             Send.NewLine = Linefeed;
-            Receive = new StreamReader(Client);
+            Receive = new StreamReader(client);
         }
     }
 }

@@ -29,27 +29,27 @@ namespace robokins
 
             Quitting += new EventHandler(delegate(object sender, EventArgs e)
             {
-                if (irc.Connected)
+                if (IrcStream.Connected)
                 {
-                    client.Quit("Got to go, bye!");
-                    irc.Client.Close(SendDelay);
+                    Client.Quit("Got to go, bye!");
+                    IrcStream.Client.Close(SendDelay);
                 }
             });
 
-            while ((line = client.Receive.ReadLine()) != null)
+            while ((line = Client.Receive.ReadLine()) != null)
             {
                 Echo(line);
                 string[] msg = line.Split(boundary, 3);
 
                 if (msg[0] == Client.PING)
-                    client.Pong(msg[1]);
+                    Client.Pong(msg[1]);
                 else if (msg[1] == Client.PRIVMSG)
                 {
                     Message message;
                     try { message = new Message(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
-                    MessageReceived(this, new MessageReceivedArgs(client, message));
+                    MessageReceived(this, new MessageReceivedArgs(Client, message));
 
                     if (quit)
                     {

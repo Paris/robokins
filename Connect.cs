@@ -7,21 +7,24 @@ namespace robokins
 {
     partial class Bot
     {
+        protected TcpClient IrcStream { get; private set; }
+        protected Client Client { get; private set; }
+
         void Connect()
         {
-            irc = new TcpClient(Server, Port);
-            irc.SendBufferSize = Client.BufferSize;
-            irc.ReceiveBufferSize = Client.BufferSize;
+            IrcStream = new TcpClient(Server, Port);
+            IrcStream.SendBufferSize = Client.BufferSize;
+            IrcStream.ReceiveBufferSize = Client.BufferSize;
 
-            client = new Client(irc.GetStream());
-            client.Pass(Password);
-            client.User(Environment.UserName, InitUsermode, RealName);
-            client.Nick(Nick);
-            client.Mode(Nick, Usermode);
+            Client = new Client(IrcStream.GetStream());
+            Client.Pass(Password);
+            Client.User(Environment.UserName, InitUsermode, RealName);
+            Client.Nick(Nick);
+            Client.Mode(Nick, Usermode);
             
             Thread.Sleep(SendDelay * 3);
 
-            client.Join(Channel, string.Empty);
+            Client.Join(Channel, string.Empty);
 
             PasteSetup();
             FunBotsSetup();
