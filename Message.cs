@@ -12,7 +12,7 @@ namespace robokins
         static void Message(Client client, string target, string text, bool notice = false)
         {
             int since = Environment.TickCount - sent;
-            if (since < SendDelay && since != -1)
+            if (since < SendDelay && since > 0 && sent != -1)
                 Thread.Sleep(since);
 
             if (notice)
