@@ -20,7 +20,7 @@ namespace robokins.IRC
                 throw new ArgumentOutOfRangeException();
             Text = z + 1 >= query.Length ? string.Empty : query.Substring(z + 1);
 
-            string[] values = query.Substring(1, z - 2).Split(Bot.boundary);
+            string[] values = query.Substring(1, z - 2).Split(' ');
 
             if (values.Length != 3)
                 throw new ArgumentOutOfRangeException();
