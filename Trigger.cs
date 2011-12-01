@@ -406,7 +406,7 @@ namespace robokins
                 notify = true;
 
             if (action && !notify) // since /me doesn't work in notice
-                response = Action(response);
+                response = Texts.Action(response);
 
             if (response.Length != 0)
             {

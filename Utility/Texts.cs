@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
+using robokins.IRC;
 
 namespace robokins.Utility
 {
@@ -49,6 +51,18 @@ namespace robokins.Utility
                 return null;
 
             return search.Substring(x, y);
+        }
+
+        public static string Action(string msg)
+        {
+            const char boundary = '\x01';
+            var buffer = new StringBuilder(2 + Client.ACTION.Length + msg.Length);
+            buffer.Append(boundary);
+            buffer.Append(Client.ACTION);
+            buffer.Append(' ');
+            buffer.Append(msg);
+            buffer.Append(boundary);
+            return buffer.ToString();
         }
     }
 }
