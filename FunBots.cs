@@ -13,7 +13,7 @@ namespace robokins
 
             timer.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
-                Message(Client, "lolikins", "!stuff");
+                Client.Private("lolikins", "!stuff");
             });
 
             Quitting += new EventHandler(delegate(object sender, EventArgs e)

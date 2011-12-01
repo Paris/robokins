@@ -55,7 +55,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            Message(e.Client, Client.ChanServ, "QUIET " + Channel + " " + command[1]);
+                            e.Client.Private(Client.ChanServ, "QUIET " + Channel + " " + command[1]);
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            Message(e.Client, Client.ChanServ, "UNQUIET " + Channel + " " + command[1]);
+                            e.Client.Private(Client.ChanServ, "UNQUIET " + Channel + " " + command[1]);
                     }
                     else
                     {
@@ -409,7 +409,12 @@ namespace robokins
                 response = Action(response);
 
             if (response.Length != 0)
-                Message(e.Client, message.Target, response, notify);
+            {
+                if (notify)
+                    e.Client.Notice(message.Target, response);
+                else
+                    e.Client.Private(message.Target, response);
+            }
 
             #endregion
         }

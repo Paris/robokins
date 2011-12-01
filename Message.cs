@@ -1,28 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Threading;
+﻿using System.Text;
 using robokins.IRC;
 
 namespace robokins
 {
     partial class Bot
     {
-        static int sent = -1;
-
-        static void Message(Client client, string target, string text, bool notice = false)
-        {
-            int since = Environment.TickCount - sent;
-            if (since < SendDelay && since > 0 && sent != -1)
-                Thread.Sleep(since);
-
-            if (notice)
-                client.Notice(target, text);
-            else
-                client.Private(target, text);
-
-            sent = Environment.TickCount;
-        }
-
         static string Action(string msg)
         {
             const char boundary = '\x01';
