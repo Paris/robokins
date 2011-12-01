@@ -7,7 +7,7 @@ namespace robokins.IRC
     {
         public void Ping(params string[] server)
         {
-            Ping(server);
+            Ping((IEnumerable<string>) server);
         }
 
         public void Ping(IEnumerable<string> server)
@@ -20,7 +20,7 @@ namespace robokins.IRC
 
         public void Pong(params string[] server)
         {
-            Pong(server);
+            Pong((IEnumerable<string>) server);
         }
 
         public void Pong(IEnumerable<string> server)
