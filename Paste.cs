@@ -36,9 +36,9 @@ namespace robokins
 
         void pasteDirectoryCheck(object sender, ElapsedEventArgs e)
         {
-            foreach (var file in Directory.GetFiles(PasteSync, "*", SearchOption.TopDirectoryOnly))
+            foreach (var file in new DirectoryInfo(PasteSync).GetFiles())
             {
-                string path = Path.Combine(PasteSync, file), id = file, nick = File.ReadAllText(path), info = string.Empty;
+                string id = file.Name, nick = File.ReadAllText(file.FullName), info = string.Empty;
 
                 int z = nick.IndexOf(' ');
                 if (z != -1)
@@ -48,7 +48,7 @@ namespace robokins
                 }
 
                 pasteMessage(nick, PasteURL + id, info);
-                File.Delete(path);
+                file.Delete();
             }
         }
 
