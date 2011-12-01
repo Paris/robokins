@@ -14,7 +14,7 @@ namespace robokins.IRC
         {
             Send.Write(PING);
             Send.Write(' ');
-            Send.WriteLine(Concat(server, " "));
+            Concat(server, " ", Send);
             Send.Flush();
         }
 
@@ -27,7 +27,7 @@ namespace robokins.IRC
         {
             Send.Write(PONG);
             Send.Write(' ');
-            Send.WriteLine(Concat(server, " "));
+            Concat(server, " ", Send);
             Send.Flush();
         }
 
