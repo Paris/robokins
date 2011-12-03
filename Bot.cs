@@ -15,7 +15,7 @@ namespace robokins
 
         public Bot()
         {
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(delegate(object sender, EventArgs e) { Quit = true; });
+            AppDomain.CurrentDomain.ProcessExit += delegate(object sender, EventArgs e) { Quit = true; };
         }
 
         [Conditional("DEBUG")]
@@ -30,16 +30,16 @@ namespace robokins
             Connect();
             string line;
 
-            MessageReceived += new EventHandler<MessageReceivedArgs>(Trigger);
+            MessageReceived += Trigger;
 
-            Quitting += new EventHandler(delegate(object sender, EventArgs e)
+            Quitting += delegate(object sender, EventArgs e)
             {
                 if (IrcStream.Connected)
                 {
                     Client.Quit("Got to go, bye!");
                     IrcStream.Client.Close(SendDelay);
                 }
-            });
+            };
 
             while ((line = Client.Receive.ReadLine()) != null)
             {
