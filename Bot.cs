@@ -54,11 +54,13 @@ namespace robokins
                     try { message = new Message(line); }
                     catch (ArgumentOutOfRangeException) { continue; }
 
-                    MessageReceived(this, new MessageReceivedArgs(Client, message));
+                    if (MessageReceived != null)
+                        MessageReceived(this, new MessageReceivedArgs(Client, message));
 
                     if (Quit)
                     {
-                        Quitting(this, new EventArgs());
+                        if (Quitting != null)
+                            Quitting(this, new EventArgs());
                         break;
                     }
                 }
