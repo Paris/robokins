@@ -30,8 +30,6 @@ namespace robokins
             Connect();
             string line;
 
-            MessageReceived += Trigger;
-
             Quitting += delegate(object sender, EventArgs e)
             {
                 if (IrcStream.Connected)
@@ -56,6 +54,8 @@ namespace robokins
 
                     if (MessageReceived != null && message != null)
                         MessageReceived(this, new MessageReceivedArgs(Client, message));
+
+                    Trigger(this, new MessageReceivedArgs(Client, message));
 
                     if (Quit)
                     {
