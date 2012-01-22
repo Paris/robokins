@@ -1,33 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace robokins.IRC
 {
     partial class Client
     {
-        public void Ping(params string[] server)
-        {
-            Ping((IEnumerable<string>) server);
-        }
-
-        public void Ping(IEnumerable<string> server)
+        public void Ping(string server1, string server2 = null)
         {
             Send.Write(PING);
             Send.Write(' ');
-            Concat(server, " ", Send);
+            Send.Write(server1);
+            if (!string.IsNullOrEmpty(server2))
+            {
+                Send.Write(' ');
+                Send.Write(server2);
+            }
+            Send.WriteLine();
             Send.Flush();
         }
 
-        public void Pong(params string[] server)
-        {
-            Pong((IEnumerable<string>) server);
-        }
-
-        public void Pong(IEnumerable<string> server)
+        public void Pong(string server1, string server2 = null)
         {
             Send.Write(PONG);
             Send.Write(' ');
-            Concat(server, " ", Send);
+            Send.Write(server1);
+            if (!string.IsNullOrEmpty(server2))
+            {
+                Send.Write(' ');
+                Send.Write(server2);
+            }
+            Send.WriteLine();
             Send.Flush();
         }
 

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace robokins.IRC
 {
-    class Message
+    class Message : EventArgs
     {
         public Message(string query)
         {

@@ -8,11 +8,11 @@ namespace robokins
 {
     partial class Bot
     {
-        void Trigger(object sender, MessageReceivedArgs e)
+        void Trigger(object sender, Message message)
         {
             #region Variables
 
-            Message message = e.Message;
+            var client = (Client)sender;
 
             if (!Invoke(message))
                 return;
@@ -36,7 +36,7 @@ namespace robokins
                 case "quit":
                 case "die":
                     if (auth)
-                        Quit = true;
+                        client.Quit("Got to go, bye!");
                     else
                     {
                         response = "You do not have the authority to make me quit.";
@@ -55,7 +55,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            e.Client.Private(Client.ChanServ, "QUIET " + Channel + " " + command[1]);
+                            client.Private(Client.ChanServ, "QUIET " + Channel + " " + command[1]);
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace robokins
                             notify = true;
                         }
                         else
-                            e.Client.Private(Client.ChanServ, "UNQUIET " + Channel + " " + command[1]);
+                            client.Private(Client.ChanServ, "UNQUIET " + Channel + " " + command[1]);
                     }
                     else
                     {
@@ -411,9 +411,9 @@ namespace robokins
             if (response.Length != 0)
             {
                 if (notify)
-                    e.Client.Notice(message.Target, response);
+                    client.Notice(message.Target, response);
                 else
-                    e.Client.Private(message.Target, response);
+                    client.Private(message.Target, response);
             }
 
             #endregion

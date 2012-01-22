@@ -62,10 +62,13 @@ namespace robokins.IRC
 
         public void Quit(string message)
         {
+            if (quit)
+                return;
             Send.Write(QUIT);
             Send.Write(" :");
             Send.WriteLine(message);
             Send.Flush();
+            quit = true;
         }
 
         public void Squit(string server, string comment)

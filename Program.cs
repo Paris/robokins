@@ -51,7 +51,7 @@ namespace robokins
             Tests(passwd);
 
             var bot = new Bot { Password = passwd };
-            bot.Start();
+            bot.Connect();
         }
     }
 }

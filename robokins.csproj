@@ -81,7 +81,6 @@
     <Compile Include="IRC\Message.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Connect.cs" />
-    <Compile Include="MessageReceived.cs" />
     <Compile Include="Paste.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

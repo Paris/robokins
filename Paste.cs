@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Timers;
 using System.Xml;
+using robokins.IRC;
 
 namespace robokins
 {
@@ -12,12 +13,45 @@ namespace robokins
         List<string> pasteIds;
 
         [Conditional("PASTE")]
-        void PasteSetup()
+        void PasteSetup(Client client)
         {
             pasteIds = new List<string>();
             var timer = new Timer(PasteFreq);
             var local = Directory.Exists(PasteSync);
-            timer.Elapsed += local ? new ElapsedEventHandler(pasteDirectoryCheck) : new ElapsedEventHandler(pasteFeedCheck);
+
+            timer.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
+            {
+                if (local)
+                {
+                    foreach (var file in new DirectoryInfo(PasteSync).GetFiles())
+                    {
+                        string id = file.Name, nick = File.ReadAllText(file.FullName), info = string.Empty;
+
+                        int z = nick.IndexOf(' ');
+                        if (z != -1)
+                        {
+                            info = nick.Substring(z + 1);
+                            nick = nick.Substring(0, z);
+                        }
+
+                        pasteMessage(client, nick, PasteURL + id, info);
+                        file.Delete();
+                    }
+                }
+                else
+                {
+                    var list = pasteFetch();
+
+                    foreach (var item in list.Keys)
+                    {
+                        if (pasteIds.Contains(item))
+                            continue;
+
+                        pasteMessage(client, list[item][0], item, list[item][1]);
+                        pasteIds.Add(item);
+                    }
+                }
+            });
 
             if (!local)
             {
@@ -25,45 +59,13 @@ namespace robokins
                     pasteIds.Add(item);
             }
 
-            Quitting += new System.EventHandler(delegate(object sender, EventArgs e)
+            client.Quitting += new System.EventHandler(delegate(object sender, EventArgs e)
             {
                 if (timer.Enabled)
                     timer.Stop();
             });
 
             timer.Start();
-        }
-
-        void pasteDirectoryCheck(object sender, ElapsedEventArgs e)
-        {
-            foreach (var file in new DirectoryInfo(PasteSync).GetFiles())
-            {
-                string id = file.Name, nick = File.ReadAllText(file.FullName), info = string.Empty;
-
-                int z = nick.IndexOf(' ');
-                if (z != -1)
-                {
-                    info = nick.Substring(z + 1);
-                    nick = nick.Substring(0, z);
-                }
-
-                pasteMessage(nick, PasteURL + id, info);
-                file.Delete();
-            }
-        }
-
-        void pasteFeedCheck(object sender, ElapsedEventArgs e)
-        {
-            var list = pasteFetch();
-
-            foreach (var item in list.Keys)
-            {
-                if (pasteIds.Contains(item))
-                    continue;
-
-                pasteMessage(list[item][0], item, list[item][1]);
-                pasteIds.Add(item);
-            }
         }
 
         internal static Dictionary<string, string[]> pasteFetch(int count = 5)
@@ -101,11 +103,11 @@ namespace robokins
             return list;
         }
 
-        void pasteMessage(string nick, string id, string info)
+        void pasteMessage(Client client, string nick, string id, string info)
         {
             if (!string.IsNullOrEmpty(info))
                 info = " - " + info;
-            Client.Private(Channel, string.Format("{0} pasted {1}{2}", new string[] { nick, id, info }));
+            client.Private(Channel, string.Format("{0} pasted {1}{2}", new string[] { nick, id, info }));
         }
     }
 }

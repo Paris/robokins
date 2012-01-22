@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Security;
 using System.Threading;
 using robokins.IRC;
 
@@ -7,27 +8,36 @@ namespace robokins
 {
     partial class Bot
     {
-        protected TcpClient IrcStream { get; private set; }
-        protected Client Client { get; private set; }
+        public SecureString Password { set; private get; }
 
-        void Connect()
+        public void Connect()
         {
-            IrcStream = new TcpClient(Server, Port);
-            IrcStream.SendBufferSize = Client.BufferSize;
-            IrcStream.ReceiveBufferSize = Client.BufferSize;
+            using (var irc = new TcpClient(Server, Port))
+            {
+                irc.SendBufferSize = Client.BufferSize;
+                irc.ReceiveBufferSize = Client.BufferSize;
 
-            Client = new Client(IrcStream.GetStream());
-            Client.Pass(Password);
-            Client.User(Environment.UserName, InitUsermode, RealName);
-            Client.Nick(Nick);
-            Client.Mode(Nick, Usermode);
-            
-            Thread.Sleep(SendDelay * 3);
+                using (var client = new Client(irc.GetStream()))
+                {
+                    client.Pass(Password);
+                    client.User(Environment.UserName, InitUsermode, RealName);
+                    client.Nick(Nick);
+                    client.Mode(Nick, Usermode);
 
-            Client.Join(Channel, string.Empty);
+                    Thread.Sleep(SendDelay * 3);
 
-            PasteSetup();
-            FunBotsSetup();
+                    client.Join(Channel, string.Empty);
+
+                    client.MessageReceived += Trigger;
+
+                    PasteSetup(client);
+                    FunBotsSetup(client);
+
+                    client.Listen();
+                }
+
+                irc.Client.Close(SendDelay);
+            }
         }
     }
 }

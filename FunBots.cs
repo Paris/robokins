@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Timers;
+using robokins.IRC;
 
 namespace robokins
 {
     partial class Bot
     {
         [Conditional("FUNBOTS")]
-        void FunBotsSetup()
+        void FunBotsSetup(Client client)
         {
             var timer = new Timer(60 * 60 * 1000 / 2);
 
             timer.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
-                Client.Private("lolikins", "!stuff");
+                client.Private("lolikins", "!stuff");
             });
 
-            Quitting += new EventHandler(delegate(object sender, EventArgs e)
+            client.Quitting += new EventHandler(delegate(object sender, EventArgs e)
             {
                 if (timer.Enabled)
                     timer.Stop();
