@@ -39,6 +39,8 @@ namespace robokins
                 }
             };
 
+            MessageReceived += Trigger;
+
             while ((line = Client.Receive.ReadLine()) != null)
             {
                 Echo(line);
@@ -54,8 +56,6 @@ namespace robokins
 
                     if (MessageReceived != null && message != null)
                         MessageReceived(this, new MessageReceivedArgs(Client, message));
-
-                    Trigger(this, new MessageReceivedArgs(Client, message));
 
                     if (Quit)
                     {
