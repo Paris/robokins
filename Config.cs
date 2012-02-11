@@ -7,6 +7,7 @@ namespace robokins
         const int Port = 6667;
         const string Delimiter = ";";
         internal const string Username = "robokins";
+        const string TriggerPrefixes = "!";
 
         const string Website = "http://www.autohotkey.net/";
 

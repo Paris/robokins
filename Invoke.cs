@@ -17,7 +17,7 @@ namespace robokins
             string word = message.Text.Split(new[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries)[0].ToLowerInvariant();
             string nickLow = Nick.ToLowerInvariant();
 
-            if (first == '!' || first == '@')
+            if (TriggerPrefixes.IndexOf(first) != -1)
             {
                 int remove = 1;
                 word = word.Substring(1);
