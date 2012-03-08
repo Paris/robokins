@@ -63,7 +63,15 @@ namespace robokins
                 }
             });
 
-            if (!local)
+            if (local)
+            {
+                foreach (var file in new DirectoryInfo(PasteSync).GetFiles())
+                {
+                    pasteIds.Add(PasteURL + file.Name);
+                    file.Delete();
+                }
+            }
+            else
             {
                 foreach (var item in pasteFetch().Keys)
                     pasteIds.Add(item);
