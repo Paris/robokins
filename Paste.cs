@@ -23,7 +23,7 @@ namespace robokins
 
             pasteIds = new List<string>();
             var timer = new Timer(PasteFreq);
-            var local = Directory.Exists(PasteSync);
+            var local = !string.IsNullOrEmpty(PasteSync) && Directory.Exists(PasteSync);
 
             timer.Elapsed += new ElapsedEventHandler(delegate(object sender, ElapsedEventArgs e)
             {
