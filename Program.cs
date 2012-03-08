@@ -44,6 +44,13 @@ namespace robokins
             if (table.ContainsKey(bitlykey))
                 Links.BitlyKey = table[bitlykey];
 
+            const string pastesync = "pastesync", pasteurl = "pasteurl";
+
+            if (table.ContainsKey(pastesync))
+                Bot.PasteSync = table[pastesync];
+            if (table.ContainsKey(pasteurl))
+                Bot.PasteURL = table[pasteurl];
+
             #endregion
 
             #endregion

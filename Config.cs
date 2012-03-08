@@ -30,8 +30,6 @@ namespace robokins
         const int SendDelay = ReceiveDelay * 2;
         const int SendMicroDelay = SendDelay / 5;
 
-        const string PasteSync = "/home/titan/public_html/paste/sync";
         const int PasteFreq = 2500;
-        const string PasteURL = "http://p.ahk.me/";
     }
 }

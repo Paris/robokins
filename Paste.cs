@@ -10,6 +10,9 @@ namespace robokins
 {
     partial class Bot
     {
+        public static string PasteSync { get; set; }
+        public static string PasteURL { get; set; }
+
         List<string> pasteIds;
 
         [Conditional("PASTE")]
