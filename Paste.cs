@@ -31,7 +31,10 @@ namespace robokins
                 {
                     foreach (var file in new DirectoryInfo(PasteSync).GetFiles())
                     {
-                        string id = file.Name, nick = File.ReadAllText(file.FullName), info = string.Empty;
+                        string id = file.Name, nick = File.ReadAllText(file.FullName), info = string.Empty, item = PasteURL + id;
+
+                        if (pasteIds.Contains(item))
+                            continue;
 
                         int z = nick.IndexOf(' ');
                         if (z != -1)
@@ -41,6 +44,7 @@ namespace robokins
                         }
 
                         pasteMessage(client, nick, PasteURL + id, info);
+                        pasteIds.Add(item);
                         file.Delete();
                     }
                 }
