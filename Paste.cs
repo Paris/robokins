@@ -43,9 +43,9 @@ namespace robokins
                             nick = nick.Substring(0, z);
                         }
 
-                        pasteMessage(client, nick, PasteURL + id, info);
                         pasteIds.Add(item);
                         file.Delete();
+                        pasteMessage(client, nick, item, info);
                     }
                 }
                 else
@@ -57,8 +57,8 @@ namespace robokins
                         if (pasteIds.Contains(item))
                             continue;
 
-                        pasteMessage(client, list[item][0], item, list[item][1]);
                         pasteIds.Add(item);
+                        pasteMessage(client, list[item][0], item, list[item][1]);
                     }
                 }
             });
