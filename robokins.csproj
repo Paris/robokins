@@ -63,7 +63,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="Bot.cs" />
     <Compile Include="ConfRead.cs" />
     <Compile Include="FunBots.cs" />
     <Compile Include="Invoke.cs" />
