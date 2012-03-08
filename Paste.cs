@@ -18,6 +18,9 @@ namespace robokins
         [Conditional("PASTE")]
         void PasteSetup(Client client)
         {
+            if (string.IsNullOrEmpty(PasteURL))
+                return;
+
             pasteIds = new List<string>();
             var timer = new Timer(PasteFreq);
             var local = Directory.Exists(PasteSync);
