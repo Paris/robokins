@@ -32,7 +32,15 @@ namespace robokins.Utility.Search
             if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(descr))
                 return null;
             else
-                return new string[] { url, HttpUtility.HtmlDecode(descr.Replace("\\u0026", "&")) };
+                return new string[] { ReplaceFirst(url.Replace("%3D", "="), "%3F", "?"), HttpUtility.HtmlDecode(descr.Replace("\\u0026", "&")) };
+        }
+
+        static string ReplaceFirst(string text, string search, string replace)
+        {
+            int pos = text.IndexOf(search);
+            if (pos < 0)
+                return text;
+            return text.Substring(0, pos) + replace + text.Substring(pos + search.Length);
         }
     }
 }
